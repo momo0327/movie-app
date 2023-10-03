@@ -1,7 +1,13 @@
 import "./Landing.sass";
+import DisplayCarousel from "../../components/DisplayCarousel/DisplayCarousel";
 
 function Landing() {
-  return <div>Landing</div>;
+  return (
+    <div>
+      HEJJJJ
+      <DisplayCarousel />
+    </div>
+  );
 }
 
 export default Landing;
