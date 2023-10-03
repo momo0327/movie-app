@@ -3,6 +3,7 @@ import Landing from "./views/Landing/Landing";
 import FilmView from "./views/FilmView/FilmView";
 import Categories from "./views/Categories/Categories";
 import Bookmarks from "./views/Bookmarks/Bookmarks";
+import Header from "./components/Header/Header";
 import "./App.css";
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
   return (
 
     <div className="app">
+      <Header/>
       <RouterProvider router={router} />
     </div>
   );
