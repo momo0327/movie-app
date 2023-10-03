@@ -2,6 +2,8 @@ import "./DisplayCarousel.scss";
 import { useRef } from "react";
 import arrowRight from "../../assets/arrowRight.svg";
 import arrowLeft from "../../assets/arrowLeft.svg";
+import SingleMovie from "../SingleMovie/SingleMovie";
+
 function DisplayCarousel() {
   const gridRef = useRef(null);
 
@@ -25,24 +27,19 @@ function DisplayCarousel() {
         alt="arrow-right-icon"
       />
       <div className="grid" ref={gridRef}>
-        <div className="grid__item"></div>
-        <div className="grid__item"></div>
-        <div className="grid__item"></div>
-        <div className="grid__item"></div>
-        <div className="grid__item"></div>
-        <div className="grid__item"></div>
-        <div className="grid__item"></div>
-        <div className="grid__item"></div>
-        <div className="grid__item"></div>
-        <div className="grid__item"></div>
-        <div className="grid__item"></div>
-        <div className="grid__item"></div>
-        <div className="grid__item"></div>
-        <div className="grid__item"></div>
-        <div className="grid__item"></div>
-        <div className="grid__item"></div>
-        <div className="grid__item"></div>
-        <div className="grid__item"></div>
+        <SingleMovie className="grid__item"/>
+        <SingleMovie className="grid__item"/>
+        <SingleMovie className="grid__item"/>
+        <SingleMovie className="grid__item"/>
+        <SingleMovie className="grid__item"/>
+        <SingleMovie className="grid__item"/>
+        <SingleMovie className="grid__item"/>
+        <SingleMovie className="grid__item"/>
+        <SingleMovie className="grid__item"/>
+        <SingleMovie className="grid__item"/>
+        <SingleMovie className="grid__item"/>
+        <SingleMovie className="grid__item"/>
+        <SingleMovie className="grid__item"/>
       </div>
       <img
         className="arrow arrow-right"
