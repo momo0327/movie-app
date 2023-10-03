@@ -2,31 +2,28 @@ import "./Landing.sass";
 import { useState, useEffect } from "react";
 import DisplayCarousel from "../../components/DisplayCarousel/DisplayCarousel";
 import Header from "../../components/Header/Header";
-import moviesData from '../../../movies.json'
+import moviesData from "../../../movies.json";
 
 function Landing() {
+  const [allMovies, setAllMovies] = useState([]);
 
-const [allMovies, setAllMovies] = useState([]);
+  console.log(allMovies);
 
-console.log(allMovies)
-
-useEffect(() => {
-  function getMovies() {
-    try {
-
-      const data = moviesData;
-      setAllMovies(data);
-
-    } catch (error) {
-      console.error('Couldnt find any movies', error);
+  useEffect(() => {
+    function getMovies() {
+      try {
+        const data = moviesData;
+        setAllMovies(data);
+      } catch (error) {
+        console.error("Couldnt find any movies", error);
+      }
     }
-  }
-  getMovies();
-}, []);
+    getMovies();
+  }, []);
 
- return (
+  return (
     <div>
-      <Header/>
+      <Header allMovies={allMovies} />
       <DisplayCarousel />
     </div>
   );
