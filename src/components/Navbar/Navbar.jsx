@@ -1,6 +1,9 @@
 import "./Navbar.scss";
+import { useNavigate } from "react-router";
 
 function Navbar() {
+  const navigate = useNavigate()
+
   return (
         <div className="navbar" >
           <div className="navbar__logo">
@@ -8,9 +11,11 @@ function Navbar() {
           </div>
 
           <ul className="navbar__list">
-            <li>CATEGORIES</li>
+            <li onClick={()=>{navigate("/movie-app")}}>HOME</li>
             <br />
-            <li>FAVORITES</li>
+            <li onClick={()=>{navigate("/movie-app/categories")}}>CATEGORIES</li>
+            <br />
+            <li onClick={()=>{navigate("/movie-app/bookmarks")}}> FAVORITES</li>
           </ul>
       </div>
   

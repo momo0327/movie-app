@@ -1,7 +1,15 @@
 import "./Bookmarks.sass";
+import SingleMovie from "../../components/SingleMovie/SingleMovie";
+
+
 
 function Bookmarks() {
-  return <div>Bookmarks</div>;
+
+  return (
+    <div>
+      <SingleMovie />
+    </div>
+  )
 }
 
 export default Bookmarks;
