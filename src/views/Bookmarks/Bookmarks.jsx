@@ -1,7 +1,12 @@
 import "./Bookmarks.sass";
+import { useNavigate } from "react-router";
 
 function Bookmarks() {
-  return <div>Bookmarks</div>;
+  const navigate = useNavigate()
+  return <div>Bookmarks
+
+    <button onClick={()=>{navigate("/movie-app/")}}>back</button>
+  </div>;
 }
 
 export default Bookmarks;
