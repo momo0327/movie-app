@@ -1,22 +1,36 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import './components/Navbar/Navbar'
-import Navbar from './components/Navbar/Navbar'
-import SearchBar from './components/SearchBar/SearchBar'
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import Landing from "./views/Landing/Landing";
+import FilmView from "./views/FilmView/FilmView";
+import Categories from "./views/Categories/Categories";
+import Bookmarks from "./views/Bookmarks/Bookmarks";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const router = createBrowserRouter([
+    {
+      path: "/movie-app/",
+      element: <Landing />,
+    },
+    {
+      path: "/movie-app/film-view",
+      element: <FilmView />,
+    },
+    {
+      path: "/movie-app/categories",
+      element: <Categories />,
+    },
+    {
+      path: "/movie-app/bookmarks",
+      element: <Bookmarks />,
+    },
+  ]);
   return (
 
-       <div>
-        <Navbar/>
-        <SearchBar/>
-      </div>
-    
-  )
+    <div className="app">
+      <RouterProvider router={router} />
+    </div>
+  );
+
 }
 
-export default App
+export default App;
