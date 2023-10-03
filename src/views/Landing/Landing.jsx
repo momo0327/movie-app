@@ -1,7 +1,10 @@
 import "./Landing.sass";
+import Header from "../../components/Header/Header";
 
 function Landing() {
-  return <div>Landing</div>;
+  return (
+    <Header/>
+  )
 }
 
 export default Landing;
