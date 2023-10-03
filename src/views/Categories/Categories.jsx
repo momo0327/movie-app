@@ -1,12 +1,7 @@
 import "./Categories.sass";
-import { useNavigate } from "react-router";
 
 function Categories() {
-const navigate = useNavigate()
-  return <div>Categories
-
-    <button onClick={()=> {navigate("/movie-app/")}}>back</button>
-  </div>;
+  return <div>Categories</div>;
 }
 
 export default Categories;
