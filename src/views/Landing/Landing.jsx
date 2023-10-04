@@ -8,8 +8,15 @@ import Footer from "../../components/Footer/Footer";
 function Landing() {
   const [allMovies, setAllMovies] = useState([]);
 
-  console.log(allMovies);
+  const content = allMovies?.map((trend)=> {   // mappar ut allMovies för att få ut all trending movies
+    if(trend.isTrending){   // om is trending finns så ska den returna titeln på trending filmen
+      console.log(trend);
 
+     return <div> {trend.title}   </div>
+    }
+    
+  })
+  
   useEffect(() => {
     function getMovies() {
       try {
@@ -24,6 +31,7 @@ function Landing() {
 
   return (
     <div className="landing">
+      {content}
       <Header allMovies={allMovies} />
       <DisplayCarousel />
       <Footer />
