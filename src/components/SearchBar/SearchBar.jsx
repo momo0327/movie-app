@@ -7,7 +7,10 @@ function SearchBar({ allMovies }) {
   console.log(allMovies);
 
   function handleKeyPress(e) {
-    if (e.key === "Enter") {
+
+    document.querySelector(".SearchBar__aside").style.display = "block";
+
+      if (e.key === "Enter") {
       const movieFound = allMovies.find(
         (movie) => movie.title.toLowerCase() === inputValue.toLowerCase()
       );
@@ -20,6 +23,14 @@ function SearchBar({ allMovies }) {
       }
     }
   }
+
+  function closePopup() {
+    addEventListener("click", (e) => {
+    document.querySelector(".SearchBar__aside").style.display = "none";
+  });
+}
+closePopup();
+
   return (
     <div className="SearchBar">
       <input
@@ -30,7 +41,9 @@ function SearchBar({ allMovies }) {
         type="text"
         placeholder="Search movies here..."
       />
-      {errorMessage && <div className="error-message">{errorMessage}</div>}
+      <aside className="SearchBar__aside">
+      {errorMessage && <p className="error-message">{errorMessage}</p>}
+        </aside>
     </div>
   );
 }
