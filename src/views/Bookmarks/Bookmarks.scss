@@ -1,0 +1,36 @@
+.booksmarks{
+    display: flex;
+    flex-direction: column;
+
+    &__img{
+        width: 100%;
+    }
+    &__title{
+        color:white;
+    }
+    &__button{
+        background-color: black;
+        border:0;
+        padding: 8px 10px;
+        color:white;
+        margin-bottom:1rem;
+    }
+    &__button:hover{
+        cursor: pointer;
+    }
+    &__grid{
+        display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+
+    }
+    &__container{
+        // width: 30;
+        // background-color: azure;
+    
+    }
+    &__text-container{
+        display: flex;
+        justify-content: space-between;
+    }
+}
