@@ -22,8 +22,13 @@ function SingleMovie({ title, thumbnail }) {
 
   return (
     <div>
-      <article className="movie-card" onClick={handleViewFilm}>
-        <img className="movie-card__image" src={thumbnail} alt="" />
+      <article className="movie-card">
+        <img
+          className="movie-card__image"
+          src={thumbnail}
+          alt=""
+          onClick={handleViewFilm}
+        />
         <div className="movie-card__info">
           <h4 className="movie-card__title">{title}</h4>
           <button className="movie-card__button" onClick={handleFavoriteWord}>
