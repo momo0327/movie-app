@@ -1,6 +1,9 @@
 import "./SingleMovie.scss";
+import Landing from "../../views/Landing/Landing";
+
 
 function SingleMovie( {title, thumbnail} ) {
+
 
    return (
     <div>
