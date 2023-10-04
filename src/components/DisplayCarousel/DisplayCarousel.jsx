@@ -4,8 +4,9 @@ import arrowRight from "../../assets/arrowRight.svg";
 import arrowLeft from "../../assets/arrowLeft.svg";
 import SingleMovie from "../SingleMovie/SingleMovie";
 
-function DisplayCarousel() {
+function DisplayCarousel( { genreMovies }) {
   const gridRef = useRef(null);
+  console.log(genreMovies)
 
   const scrollLeft = () => {
     if (gridRef.current) {
@@ -18,6 +19,7 @@ function DisplayCarousel() {
       gridRef.current.scrollLeft += 500; // Anpassa detta värde efter dina behov
     }
   };
+
   return (
     <div className="display-carousel">
       <img
@@ -27,19 +29,18 @@ function DisplayCarousel() {
         alt="arrow-right-icon"
       />
       <div className="grid" ref={gridRef}>
-        <SingleMovie className="grid__item"/>
-        <SingleMovie className="grid__item"/>
-        <SingleMovie className="grid__item"/>
-        <SingleMovie className="grid__item"/>
-        <SingleMovie className="grid__item"/>
-        <SingleMovie className="grid__item"/>
-        <SingleMovie className="grid__item"/>
-        <SingleMovie className="grid__item"/>
-        <SingleMovie className="grid__item"/>
-        <SingleMovie className="grid__item"/>
-        <SingleMovie className="grid__item"/>
-        <SingleMovie className="grid__item"/>
-        <SingleMovie className="grid__item"/>
+      {genreMovies ? (
+          genreMovies.map((movie, index) => (
+            <SingleMovie
+              key={index}
+              className="grid__item"
+              title={movie.title}
+              thumbnail={movie.thumbnail}
+            />
+          ))
+        ) : (
+          <p>error</p>
+        )}
       </div>
       <img
         className="arrow arrow-right"
