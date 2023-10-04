@@ -1,8 +1,9 @@
-import "./Landing.sass";
+import "./Landing.scss";
 import { useState, useEffect } from "react";
 import DisplayCarousel from "../../components/DisplayCarousel/DisplayCarousel";
 import Header from "../../components/Header/Header";
 import moviesData from "../../../movies.json";
+import Footer from "../../components/Footer/Footer";
 
 function Landing() {
   const [allMovies, setAllMovies] = useState([]);
@@ -22,9 +23,10 @@ function Landing() {
   }, []);
 
   return (
-    <div>
+    <div className="landing">
       <Header allMovies={allMovies} />
       <DisplayCarousel />
+      <Footer />
     </div>
   );
 }

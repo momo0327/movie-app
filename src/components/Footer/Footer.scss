@@ -1,0 +1,18 @@
+.footer{
+    background-color: #444444;
+    height: 200px;
+    position:absolute;
+    width: 100%;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    &__li{
+        margin-left: 2rem;
+        color:white;
+    }
+    &__li:hover{
+        cursor: pointer;
+    }
+}
