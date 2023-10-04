@@ -1,7 +1,16 @@
 import "./FilmView.scss";
 import Footer from "../../components/Footer/Footer";
+import { useState, useEffect } from "react";
 
 function FilmView() {
+  const [movie, setMovie] = useState({});
+
+  useEffect(() => {
+    const storedMovie = localStorage.getItem("selectedMovie");
+    if (storedMovie) {
+      setMovie(JSON.parse(storedMovie));
+    }
+  }, []);
   // "title": "The Shawshank Redemption",
   // "year": 1994,
   // "rating": "R",
@@ -12,10 +21,10 @@ function FilmView() {
 
   return (
     <div className="filmview">
-      <div className="filmview__image"> IMAGE</div>
+      <img className="filmview__image" src={movie.thumbnail} alt="" />
       <section className="filmview__container">
         <article className="filmview__left">
-          <h3>The Shawshank Redemption</h3>
+          <h3>{movie.title}</h3>
           <h4>Year: 1994</h4>
           <p>
             Over the course of several years, two convicts form a friendship,
