@@ -43,12 +43,12 @@ function Categories() {
         <div key={genre}>
           <h2>{genre}</h2>
           <DisplayCarousel
-            movies={allMovies.filter((movie) => movie.genre.includes(genre))}
+            genreMovies={allMovies.filter((movie) => movie.genre.includes(genre))}
           />
         </div>
       ))}
       <Footer />
-    </div>
+   </div>
   );
 }
 
