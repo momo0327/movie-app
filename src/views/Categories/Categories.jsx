@@ -2,6 +2,7 @@ import "./Categories.sass";
 import moviesData from '../../../movies.json'
 import { useState, useEffect } from "react";
 import DisplayCarousel from "../../components/DisplayCarousel/DisplayCarousel";
+import Header from "../../components/Header/Header";
 
 
 function Categories() {
@@ -42,6 +43,7 @@ console.log(uniqueGenres)
 
   return (
     <div>
+      <Header/>
         {uniqueGenres.map(genre => (
       <div key={genre}>
         <h2>{genre}</h2>

@@ -23,9 +23,17 @@
         color: #3F8AE2;
     }
 
+    &:hover {
+        cursor: pointer;
+
+    }
 
 }
 
 li{
     list-style: none;
+}
+
+li:hover {
+    color: #cbcbcb;
 }
