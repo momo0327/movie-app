@@ -4,10 +4,17 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 
 function Bookmarks() {
+  const storedMovies = JSON.parse(localStorage.getItem("favoriteMovies")) || [];
   return (
     <div>
       <Header />
-      <SingleMovie />
+      {storedMovies.map((movie, index) => (
+        <SingleMovie
+          key={index}
+          title={movie.title}
+          thumbnail={movie.thumbnail}
+        />
+      ))}
       <Footer />
     </div>
   );
