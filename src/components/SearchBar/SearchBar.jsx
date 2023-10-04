@@ -1,14 +1,17 @@
 import "./SearchBar.scss";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 function SearchBar({ allMovies }) {
   const [inputValue, setInputValue] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const Grid__aside = useRef(null);
   console.log(allMovies);
 
   function handleKeyPress(e) {
 
-    document.querySelector(".SearchBar__aside").style.display = "block";
+    if (Grid__aside.current) {
+      Grid__aside.current.style.display = "block";
+    }
 
       if (e.key === "Enter") {
       const movieFound = allMovies.find(
@@ -26,7 +29,7 @@ function SearchBar({ allMovies }) {
 
   function closePopup() {
     addEventListener("click", (e) => {
-    document.querySelector(".SearchBar__aside").style.display = "none";
+    Grid__aside.current.style.display = "none";
   });
 }
 closePopup();
@@ -41,7 +44,7 @@ closePopup();
         type="text"
         placeholder="Search movies here..."
       />
-      <aside className="SearchBar__aside">
+      <aside className="SearchBar__aside" ref={Grid__aside}>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
         </aside>
     </div>
