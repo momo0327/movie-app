@@ -4,11 +4,25 @@ import DisplayCarousel from "../../components/DisplayCarousel/DisplayCarousel";
 import Header from "../../components/Header/Header";
 import moviesData from "../../../movies.json";
 import Footer from "../../components/Footer/Footer";
+import SingleMovie from "../../components/SingleMovie/SingleMovie";
 
 function Landing() {
   const [allMovies, setAllMovies] = useState([]);
 
-  console.log(allMovies);
+  // const content = allMovies?.map((trend)=> {   // mappar ut allMovies för att få ut all trending movies
+  //   if(trend.isTrending){   // om is trending finns så ska den returna titeln på trending filmen
+  //     console.log(trend);
+  //     return <DisplayCarousel  trendMovies={trend}   />
+    
+  //   }
+    
+  // })
+
+function getTrendingMovies(movies){
+  return movies.filter((movie) => movie.isTrending)
+}
+
+const trendingMovies = getTrendingMovies(allMovies)
 
   useEffect(() => {
     function getMovies() {
@@ -24,8 +38,9 @@ function Landing() {
 
   return (
     <div className="landing">
+      
       <Header allMovies={allMovies} />
-      <DisplayCarousel />
+      <DisplayCarousel genreMovies={trendingMovies} />
       <Footer />
     </div>
   );
