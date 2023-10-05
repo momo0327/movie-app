@@ -46,7 +46,9 @@ function Landing() {
     <div className="landing">
       
       <Header allMovies={allMovies} />
+      <h3>TRENDING</h3>
       <DisplayCarousel genreMovies={trendingMovies} />
+      <h3> RECOMMENDED </h3>
       <DisplayCarousel genreMovies={recommendedMovies}/>
       <Footer />
     </div>
