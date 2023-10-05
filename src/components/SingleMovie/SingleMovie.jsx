@@ -32,7 +32,7 @@ function SingleMovie({ title, year, thumbnail, genre, actors, synopsis }) {
           <img
             className="movie-card__image"
             src={thumbnail}
-            alt=""
+            alt="movie-img"
             onClick={handleViewFilm}
           />
           <div className="movie-card__info">
