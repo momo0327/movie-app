@@ -6,7 +6,7 @@ function Header({ allMovies }) {
   return (
     <div>
       <Navbar />
-      <Searchbar allMovies={allMovies} />
+      {/* <Searchbar allMovies={allMovies} /> */}
     
     </div>
   );

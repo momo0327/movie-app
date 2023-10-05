@@ -1,7 +1,7 @@
 import "./Navbar.scss";
 import { useNavigate } from "react-router";
-
-function Navbar() {
+import SearchBar from "../SearchBar/SearchBar";
+function Navbar(allMovies) {
   const navigate = useNavigate();
 
   return (
@@ -36,6 +36,7 @@ function Navbar() {
           FAVORITES
         </li>
       </ul>
+      <SearchBar allMovies={allMovies}/>
     </div>
   );
 }
