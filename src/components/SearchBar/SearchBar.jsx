@@ -3,50 +3,45 @@ import { useState, useRef } from "react";
 
 function SearchBar({ allMovies }) {
   const [inputValue, setInputValue] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
-  const Grid__aside = useRef(null);
-  console.log(allMovies);
+  const [displayMovies, setDisplayMovies] = useState(null);
+  let filteredMovies = []
+      
+    filteredMovies = allMovies.filter((movie) => {
+    return movie.title.toLowerCase().startsWith(inputValue)
 
-  function handleKeyPress(e) {
-
-    if (Grid__aside.current) {
-      Grid__aside.current.style.display = "block";
+    });
+    if (filteredMovies.length > 0 && inputValue.length > 0) {
     }
-
-      if (e.key === "Enter") {
-      const movieFound = allMovies.find(
-        (movie) => movie.title.toLowerCase() === inputValue.toLowerCase()
-      );
-
-      if (!movieFound) {
-        setErrorMessage("Movie not found. Please try another search.");
-      } else {
-        setErrorMessage("Movie is found");
-        console.log("Enter is working as a click");
-      }
-    }
-  }
-
-  function closePopup() {
-    addEventListener("click", (e) => {
-    Grid__aside.current.style.display = "none";
-  });
-}
-closePopup();
-
+  console.log(filteredMovies)
   return (
     <div className="SearchBar">
       <input
         className="SearchBar__input"
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
-        onKeyDown={handleKeyPress}
         type="text"
         placeholder="Search movies here..."
       />
-      <aside className="SearchBar__aside" ref={Grid__aside}>
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
-        </aside>
+      
+        {(filteredMovies.length > 0 && inputValue) && <aside className="SearchBar__aside">
+        {filteredMovies.map((movie) => {
+          return (
+            <div className="SearchBar__movie">
+              <img
+                className="SearchBar__img"
+                src={movie.thumbnail}
+                alt={movie.title}
+              />
+              <div className="SearchBar__movie__info">
+                <h3 className="SearchBar__movie__title">{movie.title}</h3>
+                <p className="SearchBar__movie__year">{movie.year}</p>
+              </div>
+            </div>
+          );
+        })}
+        </aside>  }
+      {displayMovies}
+        
     </div>
   );
 }
