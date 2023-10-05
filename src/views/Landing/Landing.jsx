@@ -9,8 +9,7 @@ import SingleMovie from "../../components/SingleMovie/SingleMovie";
 function Landing() {
   const [allMovies, setAllMovies] = useState([]);
   const [recommendedMovies, setRecommendedMovies] = useState([])
-  console.log(recommendedMovies)
-  const trendingMovies = getTrendingMovies(allMovies)
+  const [trendingMovies, setTrendingMovies] = useState([])
 
   useEffect(() => {
     function getMovies() {
@@ -32,6 +31,9 @@ function Landing() {
     const filteredMovies = allMovies.filter((movie) => !movie.isTrending); //filtrerar bort filmer som är IsTrending
     const randomMovies = getRandomMovies(filteredMovies, 7);
     setRecommendedMovies(randomMovies);
+
+    const trendingMoviesData = getTrendingMovies(allMovies);
+    setTrendingMovies(trendingMoviesData);
   }, [allMovies]);
   
   function getRandomMovies(movieArray, numberOfMovies) { // tar emot filteredMovies och siffran på hur många filmer vi vill slumpa ut
