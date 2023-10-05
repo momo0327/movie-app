@@ -3,21 +3,23 @@
 .SearchBar{
     width: 100%;
     height: 100px;
-    background-color: #000000;
+    background-color: hsl(222, 25%, 10%);
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    color: white;
 
     &__input {
         border-radius: 58px;
-        background-color: #b6b6b6c3;
+        background-color: hsl(222, 19%, 24%);
         border: none;
         width: 300px;
         height: 35px;
-        color: white;
+        color: rgb(255, 255, 255);
         padding: 1rem;
         font-size: 1.5rem;
+       
     }
 
     &__aside {
