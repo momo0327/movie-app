@@ -1,8 +1,11 @@
 import "./SingleMovie.scss";
+import { useState } from "react";
 import { useNavigate } from "react-router";
-import bookmark from "./../../assets/bookmark.svg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBookmark } from "@fortawesome/free-solid-svg-icons";
 
-function SingleMovie({ title, year,  thumbnail, genre, actors, synopsis }) {
+function SingleMovie({ title, year, thumbnail, genre, actors, synopsis }) {
+  const [isFavorite, setIsFavorite] = useState(false);
   const navigate = useNavigate();
 
   const handleViewFilm = () => {
@@ -18,22 +21,30 @@ function SingleMovie({ title, year,  thumbnail, genre, actors, synopsis }) {
       JSON.parse(localStorage.getItem("favoriteMovies")) || [];
     storedMovies.push(storedMovieData);
     localStorage.setItem("favoriteMovies", JSON.stringify(storedMovies));
+
+    setIsFavorite(true);
   };
 
   return (
     <div>
       <article className="movie-card">
-        <img
-          className="movie-card__image"
-          src={thumbnail}
-          alt=""
-          onClick={handleViewFilm}
-        />
-        <div className="movie-card__info">
-          <h4 className="movie-card__title">{title}</h4>
-          <button className="movie-card__button" onClick={handleFavoriteWord}>
-            add
-          </button>
+        <div className="movie-card__image-container">
+          <img
+            className="movie-card__image"
+            src={thumbnail}
+            alt=""
+            onClick={handleViewFilm}
+          />
+          <div className="movie-card__info">
+            <h4 className="movie-card__title">{title}</h4>
+            <FontAwesomeIcon
+              icon={faBookmark}
+              onClick={handleFavoriteWord}
+              className={`movie-card__bookmark-icon ${
+                isFavorite ? "movie-card__bookmark-icon--active" : ""
+              }`}
+            />
+          </div>
         </div>
       </article>
     </div>
