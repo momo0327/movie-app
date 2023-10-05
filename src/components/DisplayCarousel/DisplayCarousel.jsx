@@ -35,7 +35,11 @@ function DisplayCarousel( { genreMovies }) {
               key={index}
               className="grid__item"
               title={movie.title}
+              year={movie.year}
               thumbnail={movie.thumbnail}
+              genre={movie.genre}
+              actors={movie.actors}
+              synopsis={movie.synopsis}
             />
           ))
         ) : (

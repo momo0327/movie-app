@@ -29,16 +29,12 @@ function FilmView() {
         <section className="filmview__container">
           <article className="filmview__left">
             <h3>{movie.title}</h3>
-            <h4>Year: 1994</h4>
-            <p>
-              Over the course of several years, two convicts form a friendship,
-              seeking consolation and, eventually, redemption through basic
-              compassion.
-            </p>
+            <h4>Year: {movie.year}</h4>
+            <p>{movie.synopsis}</p>
           </article>
           <article className="filmview__right">
-            <h4>Actors: Tim Robbins, Morgan Freeman, Bob Gunton</h4>
-            <h4>Genre: Drama</h4>
+            <h4>Actors: </h4>
+            <h4>Genre: {movie.genre}</h4>
             <button className="filmview__button">Add/Remove</button>
           </article>
         </section>

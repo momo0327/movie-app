@@ -2,11 +2,11 @@ import "./SingleMovie.scss";
 import { useNavigate } from "react-router";
 import bookmark from "./../../assets/bookmark.svg";
 
-function SingleMovie({ title, thumbnail }) {
+function SingleMovie({ title, year,  thumbnail, genre, actors, synopsis }) {
   const navigate = useNavigate();
 
   const handleViewFilm = () => {
-    const movieData = { title, thumbnail };
+    const movieData = { title, year, thumbnail, genre, actors, synopsis };
     localStorage.setItem("selectedMovie", JSON.stringify(movieData));
     console.log(movieData);
     navigate("/movie-app/film-view");
