@@ -4,8 +4,10 @@ import Landing from "./Landing";
 import { BrowserRouter } from "react-router-dom";
 
 describe(Landing, () => {
-  it.only("should render components in landing view", () => {
-    render(<Landing />, { wrapper: BrowserRouter }); // Använder denna för att annars klagar test-terminalen på att router inte finns.
+  it.only("should render components landing view", () => {
+    render(<Landing />, { wrapper: BrowserRouter });
+    screen.debug();
+
     const headerTitle = screen.getByText(/Movie/i, { exact: false });
     expect(headerTitle).toBeInTheDocument();
 
