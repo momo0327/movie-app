@@ -8,21 +8,8 @@ import SingleMovie from "../../components/SingleMovie/SingleMovie";
 
 function Landing() {
   const [allMovies, setAllMovies] = useState([]);
-
-  // const content = allMovies?.map((trend)=> {   // mappar ut allMovies för att få ut all trending movies
-  //   if(trend.isTrending){   // om is trending finns så ska den returna titeln på trending filmen
-  //     console.log(trend);
-  //     return <DisplayCarousel  trendMovies={trend}   />
-    
-  //   }
-    
-  // })
-
-function getTrendingMovies(movies){
-  return movies.filter((movie) => movie.isTrending)
-}
-
-const trendingMovies = getTrendingMovies(allMovies)
+  const [recommendedMovies, setRecommendedMovies] = useState([])
+  const [trendingMovies, setTrendingMovies] = useState([])
 
   useEffect(() => {
     function getMovies() {
@@ -36,11 +23,31 @@ const trendingMovies = getTrendingMovies(allMovies)
     getMovies();
   }, []);
 
+  function getTrendingMovies(movies){
+    return movies.filter((movie) => movie.isTrending)
+  }
+
+  useEffect(() => {
+    const filteredMovies = allMovies.filter((movie) => !movie.isTrending); //filtrerar bort filmer som är IsTrending
+    const randomMovies = getRandomMovies(filteredMovies, 7);
+    setRecommendedMovies(randomMovies);
+
+    const trendingMoviesData = getTrendingMovies(allMovies);
+    setTrendingMovies(trendingMoviesData);
+  }, [allMovies]);
+  
+  function getRandomMovies(movieArray, numberOfMovies) { // tar emot filteredMovies och siffran på hur många filmer vi vill slumpa ut
+    const shuffledMovieArray = movieArray.sort(() => Math.random() - 0.5); // här blandas movieArray om slumpmässigt med hjälp av metoden sort().
+    return shuffledMovieArray.slice(0, numberOfMovies); // tar de första filmerna, hur många det är styrs av numberOfMovies
+  }
+
+
   return (
     <div className="landing">
       
       <Header allMovies={allMovies} />
       <DisplayCarousel genreMovies={trendingMovies} />
+      <DisplayCarousel genreMovies={recommendedMovies}/>
       <Footer />
     </div>
   );
