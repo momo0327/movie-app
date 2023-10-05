@@ -26,14 +26,12 @@ function SearchBar() {
           return (
             <div className="SearchBar__movie">
               <img
-                className="SearchBar__img"
+                className="SearchBar__movie__img"
                 src={movie.thumbnail}
                 alt={movie.title}
               />
-              <div className="SearchBar__movie__info">
                 <h3 className="SearchBar__movie__title">{movie.title}</h3>
                 <p className="SearchBar__movie__year">{movie.year}</p>
-              </div>
             </div>
           );
         })}
