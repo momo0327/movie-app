@@ -1,4 +1,4 @@
-import "./Categories.sass";
+import "./Categories.scss";
 import moviesData from "../../../movies.json";
 import { useState, useEffect } from "react";
 import DisplayCarousel from "../../components/DisplayCarousel/DisplayCarousel";
@@ -37,18 +37,20 @@ function Categories() {
   console.log(uniqueGenres);
 
   return (
-    <div>
+    <div className="categories">
       <Header />
       {uniqueGenres.map((genre) => (
         <div key={genre}>
-          <h2>{genre}</h2>
+          <h2 className="categories__title">{genre}</h2>
           <DisplayCarousel
-            genreMovies={allMovies.filter((movie) => movie.genre.includes(genre))}
+            genreMovies={allMovies.filter((movie) =>
+              movie.genre.includes(genre)
+            )}
           />
         </div>
       ))}
       <Footer />
-   </div>
+    </div>
   );
 }
 
