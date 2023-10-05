@@ -34,7 +34,7 @@ function Footer() {
       </li>
       </div>
       <div className="footer-copywrite">
-        <p>copywrite@loremipsum.com</p>
+        <p>moviefind@loremipsum.com</p>
       </div>
       <div className="footer-mewsletter">
         

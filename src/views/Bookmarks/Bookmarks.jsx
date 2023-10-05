@@ -37,6 +37,8 @@ function Bookmarks() {
   return (
     <div className="booksmarks">
       <Header />
+      <h3>FAVORITES: </h3>
+      <br />
       <div className="booksmarks__grid">
         {storedMovies
           ? storedMovies.map((movie, index) => (
