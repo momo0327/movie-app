@@ -1,18 +1,16 @@
 import "./SearchBar.scss";
-import { useState, useRef } from "react";
+import { useState } from "react";
+import movies from "../../../movies.json";
 
-function SearchBar({ allMovies }) {
+function SearchBar() {
   const [inputValue, setInputValue] = useState("");
-  const [displayMovies, setDisplayMovies] = useState(null);
   let filteredMovies = []
-      
-    filteredMovies = allMovies.filter((movie) => {
+  
+    filteredMovies = movies.filter((movie) => {
     return movie.title.toLowerCase().startsWith(inputValue)
-
-    });
+});
     if (filteredMovies.length > 0 && inputValue.length > 0) {
     }
-  console.log(filteredMovies)
   return (
     <div className="SearchBar">
       <input
@@ -40,7 +38,6 @@ function SearchBar({ allMovies }) {
           );
         })}
         </aside>  }
-      {displayMovies}
         
     </div>
   );
