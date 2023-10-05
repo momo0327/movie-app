@@ -4,7 +4,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #000000;
+    background-color: hsl(222, 25%, 10%);
     width: 100%;
 
    
@@ -19,6 +19,7 @@
     }
     
     &__logo{
+        margin-top: 1rem;
         margin-left: 5rem;
         color: #1f72d0;
     }
@@ -36,4 +37,8 @@ li{
 
 li:hover {
     color: #cbcbcb;
+}
+
+span {
+    color: white;
 }
