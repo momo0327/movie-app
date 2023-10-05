@@ -30,7 +30,7 @@ function SearchBar() {
                 src={movie.thumbnail}
                 alt={movie.title}
               />
-                <h3 className="SearchBar__movie__title">{movie.title}</h3>
+                <h2 className="SearchBar__movie__title">{movie.title}</h2>
                 <p className="SearchBar__movie__year">{movie.year}</p>
             </div>
           );
