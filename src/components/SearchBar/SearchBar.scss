@@ -10,12 +10,11 @@
 
     &__input {
         border-radius: 58px;
-        background-color: #ffffffc3;
-
+        background-color: #ffffff;
         border: none;
         width: 300px;
         height: 35px;
-        color: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
         padding: 1rem;
         font-size: 1.5rem;
        
@@ -28,7 +27,7 @@
         border-radius: 1rem;
         position: absolute;
         z-index: 2;
-        top: 8rem;
+        top: 9rem;
         overflow: scroll;
         padding: 2rem;
 
@@ -37,10 +36,11 @@
 
 .SearchBar__movie {
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-    padding: 1rem;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1.5rem;
 
     &__img {
         width: 100px;
@@ -50,5 +50,10 @@
 
     &__title {
         font-size: 1rem;
+        color: black;
+    }
+    &__year {
+        font-size: 0.8rem;
+        color: black;
     }
 }
