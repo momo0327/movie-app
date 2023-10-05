@@ -4,9 +4,9 @@ import arrowRight from "../../assets/arrowRight.svg";
 import arrowLeft from "../../assets/arrowLeft.svg";
 import SingleMovie from "../SingleMovie/SingleMovie";
 
-function DisplayCarousel( { genreMovies }) {
+function DisplayCarousel({ genreMovies }) {
   const gridRef = useRef(null);
-  console.log(genreMovies)
+  console.log(genreMovies);
 
   const scrollLeft = () => {
     if (gridRef.current) {
@@ -29,7 +29,7 @@ function DisplayCarousel( { genreMovies }) {
         alt="arrow-right-icon"
       />
       <div className="grid" ref={gridRef}>
-      {genreMovies ? (
+        {genreMovies ? (
           genreMovies.map((movie, index) => (
             <SingleMovie
               key={index}
