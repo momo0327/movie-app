@@ -5,6 +5,7 @@ import Header from "../../components/Header/Header";
 import moviesData from "../../../movies.json";
 import Footer from "../../components/Footer/Footer";
 import SingleMovie from "../../components/SingleMovie/SingleMovie";
+import poster from '../../assets/midway-poster.jpg'
 
 function Landing() {
   const [allMovies, setAllMovies] = useState([]);
@@ -46,6 +47,9 @@ function Landing() {
     <div className="landing">
       
       <Header allMovies={allMovies} />
+      <div className="header-body">
+        <img className="poster-img " src={poster} alt="" />
+      </div>
       <h3>TRENDING</h3>
       <DisplayCarousel genreMovies={trendingMovies} />
       <h3> RECOMMENDED </h3>
