@@ -7,7 +7,7 @@ function Navbar() {
   return (
     <div className="navbar">
       <div className="navbar__logo">
-        <h1>Movie-find</h1>
+        <h1>Movie<span>Find</span> </h1>
       </div>
 
       <ul className="navbar__list">

@@ -7,6 +7,7 @@ function Header({ allMovies }) {
     <div>
       <Navbar />
       <Searchbar allMovies={allMovies} />
+    
     </div>
   );
 }
