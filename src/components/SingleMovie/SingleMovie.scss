@@ -50,3 +50,18 @@
     color: #1f72d0;
   }
 }
+@media (max-width: 768px) {
+
+  .movie-card {
+    width: 150px;
+    height: 300px; 
+    &__title {
+      font-size: 12px;
+      font-weight: 300;
+    }
+    &__container{
+      height: 400px;
+    }
+  }
+
+}

@@ -1,13 +1,10 @@
 import "./Header.scss";
 import Navbar from "../Navbar/Navbar";
-import Searchbar from "../SearchBar/SearchBar";
 
-function Header({ allMovies }) {
+function Header() {
   return (
-    <div>
+    <div className="header">
       <Navbar />
-      {/* <Searchbar allMovies={allMovies} /> */}
-    
     </div>
   );
 }

@@ -10,13 +10,13 @@ function DisplayCarousel({ genreMovies }) {
 
   const scrollLeft = () => {
     if (gridRef.current) {
-      gridRef.current.scrollLeft -= 500; // Anpassa detta värde efter dina behov
+      gridRef.current.scrollLeft -= 200; // Anpassa detta värde efter dina behov
     }
   };
 
   const scrollRight = () => {
     if (gridRef.current) {
-      gridRef.current.scrollLeft += 500; // Anpassa detta värde efter dina behov
+      gridRef.current.scrollLeft += 200; // Anpassa detta värde efter dina behov
     }
   };
 
