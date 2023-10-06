@@ -60,3 +60,11 @@
         color: black;
     }
 }
+@media (max-width: 768px) {
+    .SearchBar {
+     margin-left: 0;
+     &__input{
+        width: 80%;
+     }
+    }
+  }

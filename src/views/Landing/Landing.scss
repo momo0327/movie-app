@@ -23,3 +23,10 @@ h3 {
     width: 80vw;
     border-radius: 15px;
 }
+@media (max-width: 1000px) {
+    .poster-img{
+        max-width: 100%;
+        height: auto;
+        border-radius: 15px;
+    }
+}
