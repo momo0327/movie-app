@@ -16,7 +16,6 @@ describe(Landing, () => {
 
     const navbarAndFooterLinks = screen.getAllByRole("listitem");
     expect(navbarAndFooterLinks).toHaveLength(6);
-    screen.debug();
 
     expect(screen.getByText("TRENDING")).toBeInTheDocument();
     expect(screen.getByText("RECOMMENDED")).toBeInTheDocument();
@@ -26,5 +25,6 @@ describe(Landing, () => {
 
     const footerText = screen.getByText("SUBSCRIBE TO OUR NEWSLETTER!");
     expect(footerText).toBeInTheDocument();
+    screen.debug();
   });
 });
