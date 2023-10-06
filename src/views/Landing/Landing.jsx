@@ -6,6 +6,7 @@ import moviesData from "../../../movies.json";
 import Footer from "../../components/Footer/Footer";
 import SingleMovie from "../../components/SingleMovie/SingleMovie";
 import poster from '../../assets/midway-poster.jpg'
+import Navbar from "../../components/Navbar/Navbar";
 
 function Landing() {
   const [allMovies, setAllMovies] = useState([]);
@@ -46,7 +47,7 @@ function Landing() {
   return (
     <div className="landing">
       
-      <Header allMovies={allMovies} />
+      <Navbar allMovies={allMovies} />
       <div className="header-body">
         <img className="poster-img " src={poster} alt="" />
       </div>

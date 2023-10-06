@@ -7,16 +7,19 @@
     align-items: center;
     flex-direction: column;
     color: white;
+    margin-left: 6rem;
 
     &__input {
-        border-radius: 58px;
-        background-color: #ffffff;
+        border-radius: 13px;
+        background-color:hsl(220, 34%, 23%);
         border: none;
-        width: 300px;
-        height: 35px;
-        color: rgb(0, 0, 0);
+        width: 250px;
+        height: 25px;
+        color: rgb(255, 255, 255);
         padding: 1rem;
-        font-size: 1.5rem;
+        font-size: 1rem;
+        margin-top: 1rem;
+        
        
     }
 
