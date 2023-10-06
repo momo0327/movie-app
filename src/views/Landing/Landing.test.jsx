@@ -8,7 +8,7 @@ describe(Landing, () => {
     render(<Landing />, { wrapper: BrowserRouter });
     screen.debug();
 
-    const headerTitle = screen.getByText(/Movie/i, { exact: false });
+    const headerTitle = screen.getByText("moviefind", { exact: false });
     expect(headerTitle).toBeInTheDocument();
 
     const input = screen.getByRole("textbox");

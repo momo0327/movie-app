@@ -20,7 +20,7 @@ import movies from '../../../movies.json'
 
     await userEvent.type(screen.getByRole('textbox'), "the shawshank redemption{Enter}");
     //enter
-    expect(await screen.findByText('Movie is found')).toBeInTheDocument();
+    expect(await screen.findByText("the shawshank redemption")).toBeInTheDocument();
 
   })
 
