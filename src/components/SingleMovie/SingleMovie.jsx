@@ -33,7 +33,7 @@ function SingleMovie({ title, year, thumbnail, genre, actors, synopsis }) {
 
   return (
     <div>
-      <article className="movie-card">
+      <article className="movie-card" role="movie-card">
         <div className="movie-card__image-container">
 
         {imageError ? (
