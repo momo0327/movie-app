@@ -5,9 +5,7 @@
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-
-   
-    
+  
     &__li{
         margin-top: 1rem;
         margin-left: 4rem;
@@ -41,4 +39,44 @@
     justify-content: center;
     align-items: flex-start;
     font-size: 23px;
+}
+@media (max-width: 768px) {
+   .footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   }
+   b.footer__subscribe-text{
+    width: 100%;
+    text-align: center;
+    font-size: 15px;
+
+   }
+   .footer-copywrite{
+    display: none;
+   }
+   .footer__container{
+    display: flex;
+   }
+   .links-footer{
+    display: none;
+   }
+   .footer-mewsletter{
+    width: 100%;
+    display: none;
+   }
+   .footer__li{
+    margin: 0;
+    padding:0;
+    display: flex;
+    margin-right: 3rem;
+    font-size: 18px;
+
+   }
+}
+@media (max-width: 480px) {
+    .footer__li{
+        font-size: 14px;
+       }
 }

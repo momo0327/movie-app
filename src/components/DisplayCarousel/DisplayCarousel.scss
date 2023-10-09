@@ -27,10 +27,9 @@
     overflow-x: hidden;
     padding: 2rem;
     scroll-behavior: smooth;
-    justify-content: center;
+    justify-content: space-between;
     margin: 0rem auto;
     width: 100%;
-
     
     &__item{
         border: 1px solid black;
@@ -45,11 +44,11 @@
     .display-carousel {
         width: 100%;
         padding: 1rem;
-        height: 300px;
+        height: 400px;
     }
     .grid{
         width: 100%;
-        justify-content: center;
+        justify-content: space-between;
     }
     .arrow {
         position: absolute;

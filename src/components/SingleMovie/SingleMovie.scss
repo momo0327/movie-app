@@ -1,6 +1,6 @@
 .movie-card {
-  width: 175px;
-  height: 330px;
+  width: 300px;
+  height: auto;
   background-color: hsl(222, 25%, 10%);
   border-radius: 6px 6px;
   transition: transform 0.2s, box-shadow 0.2s;
@@ -31,7 +31,7 @@
   }
 
   &__title {
-    font-size: 14px;
+    font-size: 17px;
     font-weight: 300;
   }
   &__bookmark-icon{
@@ -56,9 +56,6 @@
     &__title {
       font-size: 12px;
       font-weight: 300;
-    }
-    &__container{
-      height: 400px;
     }
   }
 
