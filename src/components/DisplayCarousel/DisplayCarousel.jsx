@@ -6,7 +6,7 @@ import SingleMovie from "../SingleMovie/SingleMovie";
 
 function DisplayCarousel({ genreMovies }) {
   const gridRef = useRef(null);
-  console.log(genreMovies);
+  
 
   const scrollLeft = () => {
     if (gridRef.current) {
@@ -28,7 +28,7 @@ function DisplayCarousel({ genreMovies }) {
         src={arrowLeft}
         alt="arrow-right-icon"
       />
-      <div className="grid" ref={gridRef}>
+      <div className="grid" role="categories__title" ref={gridRef}>
         {genreMovies ? (
           genreMovies.map((movie, index) => (
             <SingleMovie

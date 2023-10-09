@@ -22,20 +22,24 @@ function FilmView() {
   // "thumbnail": "https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_QL75_UX380_CR0,4,380,562_.jpg"
 
   return (
-    <div>
+    <div className="filmview__big-container">
       <Header />
       <div className="filmview">
         <img className="filmview__image" src={movie.thumbnail} alt="" />
         <section className="filmview__container">
           <article className="filmview__left">
-            <h3 role="title">{movie.title}</h3>
+
+
+            <h3 className="filmview__title">{movie.title}</h3>
+
             <h4>Year: {movie.year}</h4>
             <p>{movie.synopsis}</p>
           </article>
           <article className="filmview__right">
             <h4>Actors: </h4>
+            {movie.actors &&
+              movie.actors.map((actor, index) => <p key={index}>{actor}</p>)}
             <h4>Genre: {movie.genre}</h4>
-            <button className="filmview__button">Add/Remove</button>
           </article>
         </section>
       </div>
