@@ -19,11 +19,13 @@ function SearchBar() {
         type="text"
         placeholder="Search movies here..."
       />
+          
         {(filteredMovies.length > 0 && inputValue) ? (
          <aside className="SearchBar__aside">
-        {filteredMovies.map((movie) => {
+        {filteredMovies.map((movie, index) => {
+
           return (
-            <div className="SearchBar__movie">
+            <div className="SearchBar__movie" key={movie.title + index}>
               <img
                 className="SearchBar__movie__img"
                 src={movie.thumbnail}

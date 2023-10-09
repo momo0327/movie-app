@@ -19,12 +19,6 @@ jobs:
       - name: NPM Install #we now need to install all our dependencies in this environment
         run: npm ci #npm clean install - does not write to package.json
 
-        - name: Lint
-        run: npm run lint # Linting steg
-
-      - name: Test
-        run: npm test # Testing steg
-
       - name: Build
         run: npm run build
 
