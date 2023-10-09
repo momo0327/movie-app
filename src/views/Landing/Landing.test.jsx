@@ -4,7 +4,7 @@ import Landing from "./Landing";
 import { BrowserRouter } from "react-router-dom";
 
 describe(Landing, () => {
-  it.only("should display header, trending, recommended and footer in landing view", () => {
+  it("should display header, trending, recommended and footer in landing view", () => {
     render(<Landing />, { wrapper: BrowserRouter });
     screen.debug();
 
