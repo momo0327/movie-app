@@ -37,6 +37,7 @@ function Navbar(allMovies) {
         </li>
         <br />
         <li
+          data-testid="categories"
           className="navbar__li"
           onClick={() => {
             navigate("/movie-app/categories");
