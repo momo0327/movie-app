@@ -36,7 +36,6 @@ function SingleMovie({ title, year, thumbnail, genre, actors, synopsis }) {
     const storedMovies =
       JSON.parse(localStorage.getItem("favoriteMovies")) || [];
     let movieAlreadyInList = false;
-    // setIsFavorite(true);
 
     console.log(storedMovies); //loggar listan med filmer
 
