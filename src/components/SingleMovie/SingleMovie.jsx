@@ -21,14 +21,27 @@ function SingleMovie({ title, year, thumbnail, genre, actors, synopsis }) {
     navigate("/movie-app/film-view");
   };
 
-  const handleFavoriteWord = () => {
-    const storedMovieData = { title, thumbnail: imageError ? missingImage : thumbnail };
+  const handleFavoriteMovie = () => {
+    const storedMovieData = { title, thumbnail: imageError ? missingImage : thumbnail }; //filmen man klickat på
     const storedMovies =
       JSON.parse(localStorage.getItem("favoriteMovies")) || [];
-    storedMovies.push(storedMovieData);
-    localStorage.setItem("favoriteMovies", JSON.stringify(storedMovies));
+    let movieAlreadyInList = false;
 
-    setIsFavorite(true);
+    console.log(storedMovies) //loggar listan med filmer
+
+    storedMovies.forEach(movie => {
+      if (movie.title === storedMovieData.title) {
+        console.log("Filmen finns redan i listan");
+        movieAlreadyInList = true;
+        return;
+      }
+    });
+
+    if(movieAlreadyInList==false){
+      storedMovies.push(storedMovieData); //lägger till filmen i listan
+        localStorage.setItem("favoriteMovies", JSON.stringify(storedMovies)); //sparar den uppdaterade listan i localstorage
+        setIsFavorite(true);
+    }
   };
 
   return (
@@ -59,7 +72,7 @@ function SingleMovie({ title, year, thumbnail, genre, actors, synopsis }) {
             <h4 className="movie-card__title">{title}</h4>
             <FontAwesomeIcon
               icon={faBookmark}
-              onClick={handleFavoriteWord}
+              onClick={handleFavoriteMovie}
               className={`movie-card__bookmark-icon ${
                 isFavorite ? "movie-card__bookmark-icon--active" : ""
               }`}
