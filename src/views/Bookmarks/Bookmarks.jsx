@@ -1,5 +1,4 @@
 import "./Bookmarks.scss";
-import SingleMovie from "../../components/SingleMovie/SingleMovie";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import { useState, useEffect } from "react";
@@ -9,7 +8,7 @@ import { faBookmark } from "@fortawesome/free-solid-svg-icons";
 function Bookmarks() {
   const [storedMovies, setStoredMovies] = useState();
   const [isFavorite, setIsFavorite] = useState(false);
-
+  console.log(isFavorite)
   useEffect(() => {
     const movies = JSON.parse(localStorage.getItem("favoriteMovies")) || []; // hämtar data fråm arrayen i localStorage och lägger i en variabel.
     setStoredMovies(movies);
@@ -22,15 +21,7 @@ function Bookmarks() {
     );
     localStorage.setItem("favoriteMovies", JSON.stringify(updatedMovies)); // uppdaterar
     setStoredMovies(updatedMovies);
-  }
-  function handleDelete(indexToDelete) {
-    const updatedMovies = storedMovies.filter(
-      (movie, index) => index !== indexToDelete
-    );
-    localStorage.setItem("favoriteMovies", JSON.stringify(updatedMovies));
-    setStoredMovies(updatedMovies);
 
-    // Set isFavorite to false
     setIsFavorite(true);
   }
 
