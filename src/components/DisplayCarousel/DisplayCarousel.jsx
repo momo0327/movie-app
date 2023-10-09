@@ -6,7 +6,7 @@ import SingleMovie from "../SingleMovie/SingleMovie";
 
 function DisplayCarousel({ genreMovies }) {
   const gridRef = useRef(null);
-  console.log(genreMovies);
+  
 
   const scrollLeft = () => {
     if (gridRef.current) {
