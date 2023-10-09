@@ -9,8 +9,7 @@ function SearchBar() {
     filteredMovies = movies.filter((movie) => {
     return movie.title.toLowerCase().startsWith(inputValue)
 });
-    if (filteredMovies.length > 0 && inputValue.length > 0) {
-    }
+
   return (
     <div className="SearchBar">
       <input
@@ -20,8 +19,8 @@ function SearchBar() {
         type="text"
         placeholder="Search movies here..."
       />
-      
-        {(filteredMovies.length > 0 && inputValue) && <aside className="SearchBar__aside">
+        {(filteredMovies.length > 0 && inputValue) ? (
+         <aside className="SearchBar__aside">
         {filteredMovies.map((movie) => {
           return (
             <div className="SearchBar__movie">
@@ -35,10 +34,15 @@ function SearchBar() {
             </div>
           );
         })}
-        </aside>  }
-        
-    </div>
+        </aside> 
+        ) : inputValue && (
+          <aside className="SearchBar__error">
+          <p className="SearchBar__error--text">No movies found</p>
+          </aside>
+        ) }
+      </div>
   );
+  
 }
 
 export default SearchBar;
