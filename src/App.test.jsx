@@ -1,9 +1,17 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import App from './App';
+
+import { BrowserRouter } from "react-router-dom";
+
+import Landing from './views/Landing/Landing';
+import userEvent from "@testing-library/user-event";
+
+
+
 
 describe('something truthy and falsy', () => {
   it('true to be true', () => {
+    
     expect(true).toBe(true);
   });
 
@@ -13,12 +21,18 @@ describe('something truthy and falsy', () => {
 });
 
 
+// testar navigering till categorie view 
+
 describe('App', () => {
-  it('renders headline', () => {
-    render(<App title="React" />);
+  it('should navigate to categories view',async () => {
+    render(<BrowserRouter>
+    <Landing /></BrowserRouter>);
 
-    screen.debug();
+    const categoriesLink = await screen.getByTestId("categories")  // hämtar LI taggen ifrån navbar, där det ligger en onclick i
 
-    // check if App components renders headline
+    await userEvent.click(categoriesLink);  // clickar på den li taggen 
+    expect(await window.location.pathname).toBe("/movie-app/categories")   // kollar om url stämmer över categories menyn
+    
+
   });
 });
