@@ -26,7 +26,7 @@ function DisplayCarousel({ genreMovies }) {
 
   return (
     <div className="display-carousel">
-      {movieCount >= 6 && ( // if there is more than 7 movies, display arrows.
+      {movieCount >= 4 && ( // if there is more than 7 movies, display arrows.
         <img
           className="arrow arrow-left"
           onClick={scrollLeft}
@@ -52,7 +52,7 @@ function DisplayCarousel({ genreMovies }) {
           <p>error</p>
         )}
       </div>
-      {movieCount >= 6 && ( // if there is more than 7 movies, display arrows.
+      {movieCount >= 4 && ( // if there is more than 7 movies, display arrows.
         <img
           className="arrow arrow-right"
           onClick={scrollRight}
