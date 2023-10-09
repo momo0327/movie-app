@@ -40,7 +40,7 @@ function Categories() {
     <div className="categories">
       <Header />
       <br />
-      <h1 className="h1-categories">CATEGORIES</h1>
+      <h1 className="h1-categories" role="header">CATEGORIES</h1>
       <br />
       {uniqueGenres.map((genre) => (
         <div key={genre}>
