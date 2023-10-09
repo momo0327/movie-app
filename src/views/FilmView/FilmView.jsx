@@ -20,7 +20,7 @@ function FilmView() {
       );
       setIsFavorite(isFav);
     }
-  }, []);
+  }, [movie.title]);
 
   const handleFavoriteMovie = () => {
     const storedMovies =
