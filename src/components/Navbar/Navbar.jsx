@@ -16,7 +16,11 @@ function Navbar(allMovies) {
   return (
     <div className="navbar">
       <div className="navbar__logo">
-        <h1>
+        <h1
+          onClick={() => {
+            navigate("/movie-app");
+          }}
+        >
           Movie<span>Find</span>{" "}
         </h1>
       </div>
