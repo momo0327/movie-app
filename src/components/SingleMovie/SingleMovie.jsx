@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookmark } from "@fortawesome/free-solid-svg-icons";
-import missingImage from '../../assets/missing-image.svg';
+import missingImage from '../../assets/noimage.jpeg'
 
 function SingleMovie({ title, year, thumbnail, genre, actors, synopsis }) {
   const [isFavorite, setIsFavorite] = useState(false);
@@ -37,14 +37,15 @@ function SingleMovie({ title, year, thumbnail, genre, actors, synopsis }) {
         <div className="movie-card__image-container">
 
         {imageError ? (
-        <div className="placeholder">
+        
           <img
-            className="placeholder__image"
+            className="movie-card__image"
             src={missingImage}
-            alt=""
             onClick={handleViewFilm}
+            alt=""
+            
           />
-        </div>
+       
       ) : (
         <img
           className="movie-card__image"
