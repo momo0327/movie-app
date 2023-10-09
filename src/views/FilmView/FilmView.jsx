@@ -34,6 +34,8 @@ function FilmView() {
           </article>
           <article className="filmview__right">
             <h4>Actors: </h4>
+            {movie.actors &&
+              movie.actors.map((actor, index) => <p key={index}>{actor}</p>)}
             <h4>Genre: {movie.genre}</h4>
           </article>
         </section>
