@@ -1,12 +1,16 @@
 import "./DisplayCarousel.scss";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import arrowRight from "../../assets/arrowRight.svg";
 import arrowLeft from "../../assets/arrowLeft.svg";
 import SingleMovie from "../SingleMovie/SingleMovie";
 
 function DisplayCarousel({ genreMovies }) {
   const gridRef = useRef(null);
-  
+  const [movieCount, setMovieCount] = useState(0); // to check quantity of movies in displayCarousel.
+
+  useEffect(() => {
+    setMovieCount(genreMovies ? genreMovies.length : 0);
+  }, [genreMovies]);
 
   const scrollLeft = () => {
     if (gridRef.current) {
@@ -22,12 +26,14 @@ function DisplayCarousel({ genreMovies }) {
 
   return (
     <div className="display-carousel">
-      <img
-        className="arrow arrow-left"
-        onClick={scrollLeft}
-        src={arrowLeft}
-        alt="arrow-right-icon"
-      />
+      {movieCount >= 6 && ( // if there is more than 7 movies, display arrows.
+        <img
+          className="arrow arrow-left"
+          onClick={scrollLeft}
+          src={arrowLeft}
+          alt="arrow-left-icon"
+        />
+      )}
       <div className="grid" role="categories__title" ref={gridRef}>
         {genreMovies ? (
           genreMovies.map((movie, index) => (
@@ -46,12 +52,14 @@ function DisplayCarousel({ genreMovies }) {
           <p>error</p>
         )}
       </div>
-      <img
-        className="arrow arrow-right"
-        onClick={scrollRight}
-        src={arrowRight}
-        alt="arrow-right-icon"
-      />
+      {movieCount >= 6 && ( // if there is more than 7 movies, display arrows.
+        <img
+          className="arrow arrow-right"
+          onClick={scrollRight}
+          src={arrowRight}
+          alt="arrow-right-icon"
+        />
+      )}
     </div>
   );
 }
