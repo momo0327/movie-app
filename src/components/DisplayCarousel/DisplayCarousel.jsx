@@ -10,13 +10,13 @@ function DisplayCarousel({ genreMovies }) {
 
   const scrollLeft = () => {
     if (gridRef.current) {
-      gridRef.current.scrollLeft -= 200; // Anpassa detta värde efter dina behov
+      gridRef.current.scrollLeft -= 500; // how much the movies will move to the side when clicking on button
     }
   };
 
   const scrollRight = () => {
     if (gridRef.current) {
-      gridRef.current.scrollLeft += 200; // Anpassa detta värde efter dina behov
+      gridRef.current.scrollLeft += 500; // how much the movies will move to the side when clicking on button
     }
   };
 

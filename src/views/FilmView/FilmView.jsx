@@ -2,24 +2,44 @@ import "./FilmView.scss";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import { useState, useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBookmark } from "@fortawesome/free-solid-svg-icons";
 
 function FilmView() {
   const [movie, setMovie] = useState({});
+  const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
-    const storedMovie = localStorage.getItem("selectedMovie");
+    const storedMovie = JSON.parse(localStorage.getItem("selectedMovie"));
     if (storedMovie) {
-      setMovie(JSON.parse(storedMovie));
+      setMovie(storedMovie);
+      const storedMovies =
+        JSON.parse(localStorage.getItem("favoriteMovies")) || [];
+      const isFav = storedMovies.some(
+        (storedMovie) => storedMovie.title === movie.title
+      );
+      setIsFavorite(isFav);
     }
-  }, []);
+  }, [movie.title]);
 
-  // "title": "The Shawshank Redemption",
-  // "year": 1994,
-  // "rating": "R",
-  // "actors": ["Tim Robbins", "Morgan Freeman", "Bob Gunton"],
-  // "genre": "Drama",
-  // "synopsis": "Over the course of several years, two convicts form a friendship, seeking consolation and, eventually, redemption through basic compassion.",
-  // "thumbnail": "https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_QL75_UX380_CR0,4,380,562_.jpg"
+  const handleFavoriteMovie = () => {
+    const storedMovies =
+      JSON.parse(localStorage.getItem("favoriteMovies")) || [];
+    let movieAlreadyInList = false;
+
+    storedMovies.forEach((storedMovie) => {
+      if (storedMovie.title === movie.title) {
+        movieAlreadyInList = true;
+        return;
+      }
+    });
+
+    if (!movieAlreadyInList) {
+      storedMovies.push(movie);
+      localStorage.setItem("favoriteMovies", JSON.stringify(storedMovies));
+      setIsFavorite(true);
+    }
+  };
 
   return (
     <div className="filmview__big-container">
@@ -28,8 +48,11 @@ function FilmView() {
         <img className="filmview__image" src={movie.thumbnail} alt="" />
         <section className="filmview__container">
           <article className="filmview__left">
-
-
+            <FontAwesomeIcon
+              icon={faBookmark}
+              className={`filmview__icon ${isFavorite ? "active" : ""}`}
+              onClick={handleFavoriteMovie}
+            />
             <h3 className="filmview__title">{movie.title}</h3>
 
             <h4>Year: {movie.year}</h4>
