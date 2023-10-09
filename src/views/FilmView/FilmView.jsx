@@ -28,7 +28,10 @@ function FilmView() {
         <img className="filmview__image" src={movie.thumbnail} alt="" />
         <section className="filmview__container">
           <article className="filmview__left">
+
+
             <h3 className="filmview__title">{movie.title}</h3>
+
             <h4>Year: {movie.year}</h4>
             <p>{movie.synopsis}</p>
           </article>
