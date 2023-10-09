@@ -9,8 +9,7 @@ function SearchBar() {
     filteredMovies = movies.filter((movie) => {
     return movie.title.toLowerCase().startsWith(inputValue)
 });
-    if (filteredMovies.length > 0 && inputValue.length > 0) {
-    }
+ 
   return (
     <div className="SearchBar">
       <input
@@ -22,9 +21,9 @@ function SearchBar() {
       />
       
         {(filteredMovies.length > 0 && inputValue) && <aside className="SearchBar__aside">
-        {filteredMovies.map((movie) => {
+        {filteredMovies.map((movie, index) => {
           return (
-            <div className="SearchBar__movie">
+            <div className="SearchBar__movie" key={movie.title + index}>
               <img
                 className="SearchBar__movie__img"
                 src={movie.thumbnail}

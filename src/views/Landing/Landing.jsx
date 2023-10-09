@@ -1,10 +1,8 @@
 import "./Landing.scss";
 import { useState, useEffect } from "react";
 import DisplayCarousel from "../../components/DisplayCarousel/DisplayCarousel";
-import Header from "../../components/Header/Header";
 import moviesData from "../../../movies.json";
 import Footer from "../../components/Footer/Footer";
-import SingleMovie from "../../components/SingleMovie/SingleMovie";
 import poster from '../../assets/midway-poster.jpg'
 import Navbar from "../../components/Navbar/Navbar";
 
