@@ -37,6 +37,7 @@
     color:rgb(255, 255, 255);
     font-size: 27px;
     margin-left:0;
+    margin-right: 1rem;
   }
 
   &__left {
@@ -89,7 +90,7 @@
     }
     &__icon{
       font-size: 1rem;
-      right: 100px;
+      // right: 10px;
       top:3px;
     }
   }
@@ -104,7 +105,7 @@
     }
     &__icon{
       font-size: 1rem;
-      right: 20px;
+      right: -10px;
       top:3px;
     }
   }
