@@ -60,6 +60,7 @@ function SingleMovie({ title, year, thumbnail, genre, actors, synopsis }) {
               alt="movie-img"
               src={missingImage}
               onClick={handleViewFilm}
+              alt="movie-img"
             />
           ) : (
             <img
