@@ -30,3 +30,9 @@ h3 {
         border-radius: 15px;
     }
 }
+
+@media (max-width: 400px) {
+    .poster-img{
+        display: none;
+    }
+}
