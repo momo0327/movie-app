@@ -1,7 +1,7 @@
 import SingleMovie from "./SingleMovie";
 import { render, screen } from '@testing-library/react';
-import userEvent from "@testing-library/user-event";
 import { BrowserRouter } from 'react-router-dom';
+import { it, expect } from 'vitest';
 
 
 it('should render singleMovie component with props', () => {
