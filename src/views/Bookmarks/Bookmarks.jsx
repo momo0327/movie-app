@@ -20,7 +20,6 @@ function Bookmarks() {
     );
     localStorage.setItem("favoriteMovies", JSON.stringify(updatedMovies)); // uppdaterar
     setStoredMovies(updatedMovies);
-
   }
 
   return (
@@ -40,6 +39,7 @@ function Bookmarks() {
                 <aside className="booksmarks__text-container">
                   <h3 className="booksmarks__title">{movie.title}</h3>
                   <FontAwesomeIcon
+                    data-testid="remove-bookmark"
                     icon={faBookmark}
                     className={`booksmarks__icon`}
                     onClick={() => handleDelete(index)}

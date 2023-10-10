@@ -54,9 +54,9 @@ function FilmView() {
         <img className="filmview__image" src={movie.thumbnail} alt="" onError={handleImageError} />
         <section className="filmview__container">
           <article className="filmview__left">
-            
             <h3 className="filmview__title">{movie.title}</h3>
             <FontAwesomeIcon
+              data-testid="filmview-bookmark"
               icon={faBookmark}
               className={`filmview__icon ${isFavorite ? "active" : ""}`}
               onClick={handleFavoriteMovie}

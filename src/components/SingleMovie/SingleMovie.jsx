@@ -61,9 +61,9 @@ function SingleMovie({ title, year, thumbnail, genre, actors, synopsis }) {
           {imageError ? (
             <img
               className="movie-card__image"
+              alt="movie-img"
               src={missingImage}
               onClick={handleViewFilm}
-              alt=""
             />
           ) : (
             <img
@@ -78,6 +78,7 @@ function SingleMovie({ title, year, thumbnail, genre, actors, synopsis }) {
           <div className="movie-card__info">
             <h4 className="movie-card__title">{title}</h4>
             <FontAwesomeIcon
+              data-testid="bookmark"
               icon={faBookmark}
               onClick={handleFavoriteMovie}
               className={`movie-card__bookmark-icon ${
