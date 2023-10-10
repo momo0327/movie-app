@@ -12,3 +12,12 @@
     justify-content: center;
     align-items: center;
 }
+
+@media(max-width: 700px){
+    .categories__title{
+        font-size: 20px;
+    }
+    .h1-categories {
+        font-size: 28px;
+    }
+}
