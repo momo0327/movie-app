@@ -63,7 +63,7 @@ function SingleMovie({ title, year, thumbnail, genre, actors, synopsis }) {
               className="movie-card__image"
               src={missingImage}
               onClick={handleViewFilm}
-              alt=""
+              alt="movie-img"
             />
           ) : (
             <img
