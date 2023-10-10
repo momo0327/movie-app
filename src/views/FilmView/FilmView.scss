@@ -44,6 +44,7 @@
     flex-direction: column;
     gap: 1rem;
     max-width: 300px;
+    position: relative;
   }
 
   &__right {
@@ -52,10 +53,12 @@
     gap: 1rem;
     justify-content: center;
   }
-
-  &__button {
-    width: 90px;
-  }
+&__icon{
+  position: absolute;
+  right: -20px;
+  top:8px;
+  font-size: 1.3rem;
+}
   &__icon.active {
     color: #1f72d0;
   }
@@ -66,32 +69,43 @@
 
  }
  @media (max-width: 1000px) {
-  .filmview__container{
-    height: 100%;
-  }
-  .filmview__big-container{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-  .filmview__title{
-    font-size:16px;
-  }
-  .filmview__left{
-    font-size: 12px;
-  }
-  .filmview__right{
-    font-size: 12px;
+  .filmview{
+    &__container{
+      height: 100%;
+    }
+    &__big-container{
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    &__title{
+      font-size:16px;
+    }
+    &__left{
+      font-size: 12px;
+    }
+    &__right{
+      font-size: 12px;
+    }
+    &__icon{
+      font-size: 1rem;
+      right: 100px;
+      top:3px;
+    }
   }
 }
 @media (max-width: 480px) {
   .filmview{
     display: block;
+
     &__image{
       width: 80%;
       margin:auto;
     }
-    
+    &__icon{
+      font-size: 1rem;
+      right: 20px;
+      top:3px;
+    }
   }
-
 }
