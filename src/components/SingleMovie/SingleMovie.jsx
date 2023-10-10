@@ -24,7 +24,6 @@ function SingleMovie({ title, year, thumbnail, genre, actors, synopsis }) {
       synopsis,
     };
     localStorage.setItem("selectedMovie", JSON.stringify(movieData));
-    console.log(movieData);
     navigate("/movie-app/film-view");
   };
 
@@ -37,11 +36,8 @@ function SingleMovie({ title, year, thumbnail, genre, actors, synopsis }) {
       JSON.parse(localStorage.getItem("favoriteMovies")) || [];
     let movieAlreadyInList = false;
 
-    console.log(storedMovies); //loggar listan med filmer
-
     storedMovies.forEach((movie) => {
       if (movie.title === storedMovieData.title) {
-        console.log("Filmen finns redan i listan");
         movieAlreadyInList = true;
         return;
       }
@@ -61,6 +57,7 @@ function SingleMovie({ title, year, thumbnail, genre, actors, synopsis }) {
           {imageError ? (
             <img
               className="movie-card__image"
+              alt="movie-img"
               src={missingImage}
               onClick={handleViewFilm}
               alt="movie-img"
@@ -78,6 +75,7 @@ function SingleMovie({ title, year, thumbnail, genre, actors, synopsis }) {
           <div className="movie-card__info">
             <h4 className="movie-card__title">{title}</h4>
             <FontAwesomeIcon
+              data-testid="bookmark"
               icon={faBookmark}
               onClick={handleFavoriteMovie}
               className={`movie-card__bookmark-icon ${
