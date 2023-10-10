@@ -107,7 +107,7 @@ describe("App", () => {
     const favoriteMovie = screen.queryAllByText(/The Godfather: Part II/i);
     expect(favoriteMovie.length).toBe(1);
   });
-  it.only("should display image on every movie", async () => {
+  it("should display image on every movie", async () => {
     const entries = "/movie-app/";
     const user = userEvent.setup();
     render(
