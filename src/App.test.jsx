@@ -107,7 +107,7 @@ describe("App", () => {
     const favoriteMovie = screen.queryAllByText(/The Godfather: Part II/i);
     expect(favoriteMovie.length).toBe(1);
   });
-  it("should display image on every movie", async () => {
+  it.only("should display image on every movie", async () => {
     const entries = "/movie-app/";
     const user = userEvent.setup();
     render(
@@ -122,8 +122,8 @@ describe("App", () => {
     await user.click(navigationToCategories[0]);
 
     const images = await screen.findAllByAltText("movie-img");
-    // expect(images).toHaveLength(69);
-    // lägg till rätt antal
+    expect(images).toHaveLength(69);
+    // render error img?
   });
   it("should be able to mark movie as a bookmark from filmView", async () => {
     const entries = "/movie-app/";
