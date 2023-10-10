@@ -67,7 +67,7 @@ describe("App", () => {
     const favoriteMovie = screen.getByText(/The Godfather: Part II/i);
     expect(favoriteMovie).toBeInTheDocument();
   });
-  it.only("should add a movie by clicking bookmark, go to favorites and click the bookmark to remove the favorite movie", async () => {
+  it("should add a movie by clicking bookmark, go to favorites and click the bookmark to remove the favorite movie", async () => {
     const entries = "/movie-app/";
     const user = userEvent.setup();
     render(
@@ -81,7 +81,6 @@ describe("App", () => {
     const bookmark = screen.getAllByTestId("bookmark");
     user.click(bookmark[0]);
     const navigationToBookMark = screen.getAllByText("FAVORITES");
-    screen.debug();
     await user.click(navigationToBookMark[0]);
     const favoriteMovie = screen.getByText(/The Godfather: Part II/i);
     expect(favoriteMovie).toBeInTheDocument();
@@ -124,11 +123,8 @@ describe("App", () => {
 
     const images = await screen.findAllByAltText("movie-img");
     expect(images).toHaveLength(69);
-
-    screen.debug();
   });
-  it("should display year in every SingleMovie", () => {});
-  it.only("should be able to mark movie as a bookmark from filmView", async () => {
+  it("should be able to mark movie as a bookmark from filmView", async () => {
     const entries = "/movie-app/";
     const user = userEvent.setup();
     render(

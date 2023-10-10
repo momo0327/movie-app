@@ -24,14 +24,16 @@ function App() {
       path: "/movie-app/bookmarks",
       element: <Bookmarks />,
     },
+    {
+      path: "*",
+      element: <Landing />,
+    },
   ]);
   return (
-
     <div className="app">
       <RouterProvider router={router} />
     </div>
   );
-
 }
 
 export default App;

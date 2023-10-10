@@ -8,8 +8,6 @@ import Footer from "../../components/Footer/Footer";
 function Categories() {
   const [allMovies, setAllMovies] = useState([]);
 
-  console.log(allMovies);
-
   useEffect(() => {
     function getMovies() {
       try {
@@ -34,13 +32,14 @@ function Categories() {
   }
 
   const uniqueGenres = getGenres(allMovies);
-  console.log(uniqueGenres);
 
   return (
     <div className="categories">
       <Header />
       <br />
-      <h1 className="h1-categories" role="header">CATEGORIES</h1>
+      <h1 className="h1-categories" role="header">
+        CATEGORIES
+      </h1>
       <br />
       {uniqueGenres.map((genre) => (
         <div key={genre}>
