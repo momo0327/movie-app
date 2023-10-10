@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookmark } from "@fortawesome/free-solid-svg-icons";
 import missingImage from "../../assets/noimage.jpeg";
+import { useNavigate } from "react-router";
 
 function FilmView() {
   const [movie, setMovie] = useState({});

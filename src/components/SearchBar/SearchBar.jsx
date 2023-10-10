@@ -28,9 +28,17 @@ function SearchBar() {
       synopsis: filteredMovies[0].synopsis,
       handleImageError: filteredMovies[0].handleImageError,
     };
+    console.log(movieData)
+    if (movieData.thumbnail === '') {
     localStorage.setItem("selectedMovie", JSON.stringify(movie));
-    navigate("/movie-app/film-view", window.location.reload());
+    navigate("/movie-app/film-view");
     return movieData;
+    } else {
+      localStorage.setItem("selectedMovie", JSON.stringify(movie));
+      navigate("/movie-app/film-view");
+      window.location.reload();
+      return movieData;
+    }
   };
 
   return (
