@@ -4,6 +4,7 @@ import Footer from "../../components/Footer/Footer";
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookmark } from "@fortawesome/free-solid-svg-icons";
+import missingImage from "../../assets/noimage.jpeg";
 
 function FilmView() {
   const [movie, setMovie] = useState({});
@@ -41,11 +42,16 @@ function FilmView() {
     }
   };
 
+  const handleImageError = (e) => {
+    e.target.onerror = null;
+    e.target.src = missingImage;
+  };
+
   return (
     <div className="filmview__big-container">
       <Header />
       <div className="filmview">
-        <img className="filmview__image" src={movie.thumbnail} alt="" />
+        <img className="filmview__image" src={movie.thumbnail} alt="" onError={handleImageError} />
         <section className="filmview__container">
           <article className="filmview__left">
             
