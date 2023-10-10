@@ -72,6 +72,7 @@ function SingleMovie({ title, year, thumbnail, genre, actors, synopsis }) {
               alt="movie-img"
               onClick={handleViewFilm}
               onError={handleImageError}
+              data-testid="SingleMovie"
             />
           )}
           <div className="movie-card__info">
