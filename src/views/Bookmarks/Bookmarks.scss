@@ -6,12 +6,12 @@
     &__img{
         width: 100%;
         position: relative;
-        border-top-right-radius: 3%;
-        border-top-left-radius: 3%;
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
     }
     &__title{
         color:white;
-        font-size: 18px;
+        font-size: 16px;
         font-weight: 400;
         margin: 1rem;
     }
@@ -27,20 +27,20 @@
     }
     &__grid{
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
         gap: 1rem;
-
+        margin: 0rem 2rem;
     }
     &__container{
-        margin: 2rem;
         background-color: rgb(53, 57, 65);
-        border-radius: 3%;
+        border-radius: 10px;
     }
     &__text-container{
         display: flex;
         justify-content: space-between;
     }
     &__icon{
+        font-size: 1.4rem;
         color: #1f72d0;
         margin: 0.5rem;
     }
@@ -48,6 +48,28 @@
         color:white;
         cursor: pointer;
     }
-  
+}
+@media (max-width: 480px) {
+    .booksmarks{
+        &__grid{
+            width: 100%;
+            margin-bottom: 2rem;
+            margin: auto;
+            padding: 1rem;
+        }
+       &__img{
+        width: 100%;
+       }
+       &__container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+       }
+       &__icon{
+        font-size: 1.2rem;
+        color: #1f72d0;
+        margin: 1rem;
+    }
+    }
 }
 
