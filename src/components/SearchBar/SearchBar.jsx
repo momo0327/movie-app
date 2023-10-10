@@ -6,7 +6,6 @@ import missingImage from "../../assets/noimage.jpeg";
 
 function SearchBar() {
   const [inputValue, setInputValue] = useState("");
-  const [imageError, setImageError] = useState(false);
   const navigate = useNavigate();
   let filteredMovies = []
 
@@ -31,7 +30,7 @@ function SearchBar() {
     };
     localStorage.setItem("selectedMovie", JSON.stringify(movie));
     navigate("/movie-app/film-view", window.location.reload());
-    
+    return movieData;
   };
 
   return (
