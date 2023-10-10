@@ -57,10 +57,8 @@ function SingleMovie({ title, year, thumbnail, genre, actors, synopsis }) {
           {imageError ? (
             <img
               className="movie-card__image"
-              alt="movie-img"
               src={missingImage}
               onClick={handleViewFilm}
-              alt="movie-img"
             />
           ) : (
             <img

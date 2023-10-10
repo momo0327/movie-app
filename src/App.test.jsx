@@ -123,6 +123,7 @@ describe("App", () => {
 
     const images = await screen.findAllByAltText("movie-img");
     expect(images).toHaveLength(69);
+    // render error img?
   });
   it("should be able to mark movie as a bookmark from filmView", async () => {
     const entries = "/movie-app/";
