@@ -11,7 +11,7 @@ describe(SearchBar, () => {
     await userEvent.type(screen.getByRole('textbox'), "titanic");
     expect(screen.getByRole('textbox')).toHaveValue("titanic")
   });
-  it.only("should tell the user when a movie is found", async () => {
+  it("should tell the user when a movie is found", async () => {
     //testar meddelande att filmen hittas
     //denna behöver nog ändras till att filmens titel visas på skärmen senare!
     render(<SearchBar allMovies={movies}/>, { wrapper: BrowserRouter });
