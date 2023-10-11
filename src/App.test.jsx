@@ -7,7 +7,7 @@ import SingleMovie from "./components/SingleMovie/SingleMovie";
 import Bookmarks from "./views/Bookmarks/Bookmarks";
 import Categories from "./views/Categories/Categories";
 import FilmView from "./views/FilmView/FilmView";
-import { FavoriteMoviesContext } from "./components/LocalStorageContext/LocalStorageContext";
+import { FavoriteMoviesContext, FavoriteMoviesProvider } from "./components/LocalStorageContext/LocalStorageContext";
 import { vi } from "vitest";
 
 const mockFavoriteMoviesProviderValue = {
@@ -49,11 +49,11 @@ describe("App", () => {
 
   it("should click on a movie and check the url film-view", async () => {
     render(
-      <MockFavoriteMoviesProvider>
+      <FavoriteMoviesProvider>
         <BrowserRouter>
           <SingleMovie />
         </BrowserRouter>
-      </MockFavoriteMoviesProvider>
+      </FavoriteMoviesProvider>
     );
 
     const singleMovieClick = await screen.getByTestId("SingleMovie"); // hämtar img taggen ifrån singlemovie
@@ -162,11 +162,11 @@ describe("App", () => {
     // expect(errorImages).toHaveLength(2);
   });
 
-  it("should be able to mark movie as a bookmark from filmView", async () => { //failar
+  it.only("should be able to mark movie as a bookmark from filmView", async () => { //failar
     const entries = "/movie-app/";
     const user = userEvent.setup();
     render(
-      <MockFavoriteMoviesProvider>
+      <FavoriteMoviesProvider>
         <MemoryRouter initialEntries={[entries]}>
           <Routes>
             <Route path="/movie-app/" element={<Landing />} />
@@ -174,7 +174,7 @@ describe("App", () => {
             <Route path="/movie-app/bookmarks" element={<Bookmarks />} />
           </Routes>
         </MemoryRouter>
-      </MockFavoriteMoviesProvider>
+      </FavoriteMoviesProvider>
     );
     
     const image = screen.getAllByAltText("movie-img");
@@ -185,12 +185,21 @@ describe("App", () => {
 
     const navigationToFavorites = screen.getAllByText("FAVORITES");
     await user.click(navigationToFavorites[0]);
-
-    const favoriteMovie = screen.getByText(/The Godfather: Part II/i);
+    const favoriteMovie = await screen.findByText(/The Godfather: Part II/i);
     expect(favoriteMovie).toBeInTheDocument();
   });
 });
 
+
+{/* <FavoriteMoviesContext.Provider
+      value={{
+        [{title:}], //om vi vill starta testet med en existerande film i contexten
+        addMovie,
+        removeMovie,
+      }}
+    >
+      {children}
+    </FavoriteMoviesContext.Provider> */}
 // lägger till film i bookmark laddar om hemsidan för att se om filmen är fortfarande kvar
 it("should add a movie by clicking bookmark, go to favorites and see the favorite there refresh the page and see if the movie is still there", async () => {
   const entries = "/movie-app/";

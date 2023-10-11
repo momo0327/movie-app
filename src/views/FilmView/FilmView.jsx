@@ -11,7 +11,7 @@ function FilmView() {
   const [movie, setMovie] = useState({});
   const [isFavorite, setIsFavorite] = useState(false);
   const { addMovie, removeMovie } = useContext(FavoriteMoviesContext);
-
+  console.log("Du är i FilmView! Filmen är: ", movie);
   useEffect(() => {
     const storedMovie = JSON.parse(localStorage.getItem("selectedMovie"));
     if (storedMovie) {
