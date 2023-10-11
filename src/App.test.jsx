@@ -8,6 +8,7 @@ import Bookmarks from "./views/Bookmarks/Bookmarks";
 import Categories from "./views/Categories/Categories";
 import FilmView from "./views/FilmView/FilmView";
 import { FavoriteMoviesContext } from "./components/LocalStorageContext/LocalStorageContext";
+import { vi } from "vitest";
 
 const mockFavoriteMoviesProviderValue = {
   // gör funktionerna + arrayen till en variabel ifrån localStorageContext.
@@ -18,10 +19,10 @@ const mockFavoriteMoviesProviderValue = {
 
 // skapar en egen provider med de mockade värderna som man måste wrappa i testerna för att contexten finns över hela sidan.
 const MockFavoriteMoviesProvider = ({ children }) => {
+        // skickar med variabeln som props här nedan tillsammans med providern.
   return (
     <FavoriteMoviesContext.Provider value={mockFavoriteMoviesProviderValue}>
       {" "}
-      // skickar med variabeln som props här tillsammans med providern.
       {children}
     </FavoriteMoviesContext.Provider>
   );
