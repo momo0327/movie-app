@@ -1,8 +1,9 @@
 import SingleMovie from "./SingleMovie";
 import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
-import { it, expect } from "vitest";
+import { it, expect } from "vitest"; //vitest
 import { FavoriteMoviesContext } from "../LocalStorageContext/LocalStorageContext";
+import { vi } from "vitest";
 
 const mockFavoriteMoviesProviderValue = {
   addMovie: vi.fn(),

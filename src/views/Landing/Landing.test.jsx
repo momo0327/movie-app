@@ -3,6 +3,7 @@ import { render, screen } from "@testing-library/react";
 import Landing from "./Landing";
 import { BrowserRouter } from "react-router-dom";
 import { FavoriteMoviesContext } from "../../components/LocalStorageContext/LocalStorageContext";
+import { vi } from "vitest";
 
 const mockFavoriteMoviesProviderValue = {
   addMovie: vi.fn(),
