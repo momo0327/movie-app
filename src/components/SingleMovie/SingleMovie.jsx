@@ -38,7 +38,7 @@ function SingleMovie({ title, year, thumbnail, genre, actors, synopsis }) {
       thumbnail: imageError ? missingImage : thumbnail,
     };
     addMovie(movieToAdd); // Anropar funktionen addMovie från vår context och lägger till den nya filmen.
-
+    console.log(movieToAdd);
     // Kontrollera om filmen redan finns i favoritlistan
     const existingMovie = favoriteMovies.find(
       (movie) => movie.title === movieToAdd.title

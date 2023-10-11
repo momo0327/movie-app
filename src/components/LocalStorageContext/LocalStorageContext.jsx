@@ -17,6 +17,7 @@ export const FavoriteMoviesProvider = ({ children }) => {
 
   // Funktion som  lägger till en ny favoritfilm i listan.
   function addMovie(newMovie) {
+    console.log(newMovie);
     // Kontrollera om filmen redan finns i listan.
     const existingMovie = favoriteMovies.find(
       (currentMovie) => currentMovie.title === newMovie.title
@@ -24,8 +25,8 @@ export const FavoriteMoviesProvider = ({ children }) => {
 
     if (!existingMovie) {
       // Om filmen inte redan finns, kopiera den befintliga listan och lägg till den nya filmen.
-      const updatedMovies = [...favoriteMovies, newMovie];
-
+      const updatedMovies = structuredClone([...favoriteMovies, newMovie]);
+      
       // Spara den uppdaterade listan i localStorage som JSON.
       localStorage.setItem("favoriteMovies", JSON.stringify(updatedMovies));
       setFavoriteMovies(updatedMovies);
