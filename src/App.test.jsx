@@ -136,3 +136,29 @@ describe("App", () => {
     expect(favoriteMovie).toBeInTheDocument();
   });
 });
+// lägger till film i bookmark laddar om hemsidan för att se om filmen är fortfarande kvar
+it("should add a movie by clicking bookmark, go to favorites and see the favorite there refresh the page and see if the movie is still there", async () => {
+  const entries = "/movie-app/";
+  const user = userEvent.setup();
+  render(
+    <MemoryRouter initialEntries={[entries]}>
+      <Routes>
+        <Route path="/movie-app/" element={<Landing />} />
+        <Route path="/movie-app/bookmarks" element={<Bookmarks />} />
+      </Routes>
+    </MemoryRouter>
+  );
+  const bookmark = screen.getAllByTestId("bookmark");
+  user.click(bookmark[0]);
+  const navigationToBookMark = screen.getAllByText("FAVORITES");
+  await user.click(navigationToBookMark[0]);
+  const favoriteMovie = screen.getByText(/The Godfather: Part II/i);
+  expect(favoriteMovie).toBeInTheDocument();
+  const reloadFn = () => {
+    window.location.reload();    // refreshar sidan
+  }
+  reloadFn()
+
+  expect(favoriteMovie).toBeInTheDocument();
+
+});
