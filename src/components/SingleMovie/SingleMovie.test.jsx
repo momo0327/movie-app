@@ -8,20 +8,24 @@ it('should render singleMovie component with props', () => {
   const movie = {
     title: 'Movie Title',
     thumbnail: 'image-url.jpg',
+    year: '2008'
    };
 
   render(
     <SingleMovie
       title={movie.title}
       thumbnail={movie.thumbnail}
+      year={movie.year}
      />, { wrapper: BrowserRouter }
   );
 
-  const title = screen.queryByText('Movie Title');
-  const image = screen.queryByAltText('movie-img');
+  const title = screen.getByText('Movie Title');
+  const image = screen.getByAltText('movie-img');
+  const year = screen.getByText('2008')
 
   expect(title).toBeInTheDocument();
   expect(image).toBeInTheDocument();
+  expect(year).toBeInTheDocument();
 });
 
 
