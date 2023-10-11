@@ -1,14 +1,16 @@
 import "./FilmView.scss";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookmark } from "@fortawesome/free-solid-svg-icons";
 import missingImage from "../../assets/noimage.jpeg";
+import { FavoriteMoviesContext } from "../../components/LocalStorageContext/LocalStorageContext";
 
 function FilmView() {
   const [movie, setMovie] = useState({});
   const [isFavorite, setIsFavorite] = useState(false);
+  const { addMovie, removeMovie } = useContext(FavoriteMoviesContext);
 
   useEffect(() => {
     const storedMovie = JSON.parse(localStorage.getItem("selectedMovie"));
@@ -24,20 +26,11 @@ function FilmView() {
   }, [movie.title]);
 
   const handleFavoriteMovie = () => {
-    const storedMovies =
-      JSON.parse(localStorage.getItem("favoriteMovies")) || [];
-    let movieAlreadyInList = false;
-
-    storedMovies.forEach((storedMovie) => {
-      if (storedMovie.title === movie.title) {
-        movieAlreadyInList = true;
-        return;
-      }
-    });
-
-    if (!movieAlreadyInList) {
-      storedMovies.push(movie);
-      localStorage.setItem("favoriteMovies", JSON.stringify(storedMovies));
+    if (isFavorite) {
+      removeMovie(movie);
+      setIsFavorite(false);
+    } else {
+      addMovie(movie);
       setIsFavorite(true);
     }
   };
@@ -51,7 +44,12 @@ function FilmView() {
     <div className="filmview__big-container">
       <Header />
       <div className="filmview">
-        <img className="filmview__image" src={movie.thumbnail} alt="" onError={handleImageError} />
+        <img
+          className="filmview__image"
+          src={movie.thumbnail}
+          alt=""
+          onError={handleImageError}
+        />
         <section className="filmview__container">
           <article className="filmview__left">
             <h3 className="filmview__title">{movie.title}</h3>

@@ -59,10 +59,12 @@
   right: -20px;
   top:8px;
   font-size: 1.3rem;
+  color:white;
 }
   &__icon.active {
     color: #1f72d0;
   }
+  
   &__icon:hover{
     color: #1f72d0;
     cursor: pointer;

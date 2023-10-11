@@ -2,10 +2,30 @@ import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import Landing from "./Landing";
 import { BrowserRouter } from "react-router-dom";
+import { FavoriteMoviesContext } from "../../components/LocalStorageContext/LocalStorageContext";
+
+const mockFavoriteMoviesProviderValue = {
+  addMovie: vi.fn(),
+  removeMovie: vi.fn(),
+  favoriteMovies: [""],
+};
+
+const MockFavoriteMoviesProvider = ({ children }) => {
+  return (
+    <FavoriteMoviesContext.Provider value={mockFavoriteMoviesProviderValue}>
+      {children}
+    </FavoriteMoviesContext.Provider>
+  );
+};
 
 describe(Landing, () => {
   it("should display header, trending, recommended and footer in landing view", () => {
-    render(<Landing />, { wrapper: BrowserRouter });
+    render(
+      <MockFavoriteMoviesProvider>
+        <Landing />
+      </MockFavoriteMoviesProvider>,
+      { wrapper: BrowserRouter }
+    );
     screen.debug();
 
     const headerTitle = screen.getByText("moviefind", { exact: false });

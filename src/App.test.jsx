@@ -7,6 +7,25 @@ import SingleMovie from "./components/SingleMovie/SingleMovie";
 import Bookmarks from "./views/Bookmarks/Bookmarks";
 import Categories from "./views/Categories/Categories";
 import FilmView from "./views/FilmView/FilmView";
+import { FavoriteMoviesContext } from "./components/LocalStorageContext/LocalStorageContext";
+
+const mockFavoriteMoviesProviderValue = {
+  // gör funktionerna + arrayen till en variabel ifrån localStorageContext.
+  addMovie: vi.fn(),
+  removeMovie: vi.fn(),
+  favoriteMovies: [""],
+};
+
+// skapar en egen provider med de mockade värderna som man måste wrappa i testerna för att contexten finns över hela sidan.
+const MockFavoriteMoviesProvider = ({ children }) => {
+  return (
+    <FavoriteMoviesContext.Provider value={mockFavoriteMoviesProviderValue}>
+      {" "}
+      // skickar med variabeln som props här tillsammans med providern.
+      {children}
+    </FavoriteMoviesContext.Provider>
+  );
+};
 
 // testar navigering till categorie view
 describe("App", () => {
@@ -28,9 +47,11 @@ describe("App", () => {
 describe("App", () => {
   it("should click on a movie and check the url film-view", async () => {
     render(
-      <BrowserRouter>
-        <SingleMovie />
-      </BrowserRouter>
+      <MockFavoriteMoviesProvider>
+        <BrowserRouter>
+          <SingleMovie />
+        </BrowserRouter>
+      </MockFavoriteMoviesProvider>
     );
 
     const singleMovieClick = await screen.getByTestId("SingleMovie"); // hämtar img taggen ifrån singlemovie, där det ligger en onclick i
@@ -42,12 +63,14 @@ describe("App", () => {
     const entries = "/movie-app/";
     const user = userEvent.setup();
     render(
-      <MemoryRouter initialEntries={[entries]}>
-        <Routes>
-          <Route path="/movie-app/" element={<Landing />} />
-          <Route path="/movie-app/bookmarks" element={<Bookmarks />} />
-        </Routes>
-      </MemoryRouter>
+      <MockFavoriteMoviesProvider>
+        <MemoryRouter initialEntries={[entries]}>
+          <Routes>
+            <Route path="/movie-app/" element={<Landing />} />
+            <Route path="/movie-app/bookmarks" element={<Bookmarks />} />
+          </Routes>
+        </MemoryRouter>
+      </MockFavoriteMoviesProvider>
     );
     const bookmark = screen.getAllByTestId("bookmark");
     user.click(bookmark[0]);
@@ -71,7 +94,7 @@ describe("App", () => {
     user.click(bookmark[0]);
     const navigationToBookMark = screen.getAllByText("FAVORITES");
     await user.click(navigationToBookMark[0]);
-    const favoriteMovie = screen.getByText(/The Godfather: Part II/i);
+    const favoriteMovie = await screen.findByText(/The Godfather: Part II/i);
     expect(favoriteMovie).toBeInTheDocument();
     const removeBookMark = screen.getByTestId("remove-bookmark");
     await user.click(removeBookMark);
@@ -81,12 +104,14 @@ describe("App", () => {
     const entries = "/movie-app/";
     const user = userEvent.setup();
     render(
-      <MemoryRouter initialEntries={[entries]}>
-        <Routes>
-          <Route path="/movie-app/" element={<Landing />} />
-          <Route path="/movie-app/bookmarks" element={<Bookmarks />} />
-        </Routes>
-      </MemoryRouter>
+      <MockFavoriteMoviesProvider>
+        <MemoryRouter initialEntries={[entries]}>
+          <Routes>
+            <Route path="/movie-app/" element={<Landing />} />
+            <Route path="/movie-app/bookmarks" element={<Bookmarks />} />
+          </Routes>
+        </MemoryRouter>
+      </MockFavoriteMoviesProvider>
     );
     const bookmark = screen.getAllByTestId("bookmark");
     await user.click(bookmark[0]);
@@ -100,12 +125,14 @@ describe("App", () => {
     const entries = "/movie-app/";
     const user = userEvent.setup();
     render(
-      <MemoryRouter initialEntries={[entries]}>
-        <Routes>
-          <Route path="/movie-app/" element={<Landing />} />
-          <Route path="/movie-app/categories" element={<Categories />} />
-        </Routes>
-      </MemoryRouter>
+      <MockFavoriteMoviesProvider>
+        <MemoryRouter initialEntries={[entries]}>
+          <Routes>
+            <Route path="/movie-app/" element={<Landing />} />
+            <Route path="/movie-app/categories" element={<Categories />} />
+          </Routes>
+        </MemoryRouter>
+      </MockFavoriteMoviesProvider>
     );
     const navigationToCategories = screen.getAllByText("CATEGORIES");
     await user.click(navigationToCategories[0]);
@@ -118,13 +145,15 @@ describe("App", () => {
     const entries = "/movie-app/";
     const user = userEvent.setup();
     render(
-      <MemoryRouter initialEntries={[entries]}>
-        <Routes>
-          <Route path="/movie-app/" element={<Landing />} />
-          <Route path="/movie-app/film-view" element={<FilmView />} />
-          <Route path="/movie-app/bookmarks" element={<Bookmarks />} />
-        </Routes>
-      </MemoryRouter>
+      <MockFavoriteMoviesProvider>
+        <MemoryRouter initialEntries={[entries]}>
+          <Routes>
+            <Route path="/movie-app/" element={<Landing />} />
+            <Route path="/movie-app/film-view" element={<FilmView />} />
+            <Route path="/movie-app/bookmarks" element={<Bookmarks />} />
+          </Routes>
+        </MemoryRouter>
+      </MockFavoriteMoviesProvider>
     );
     const image = screen.getAllByAltText("movie-img");
     await user.click(image[0]);
