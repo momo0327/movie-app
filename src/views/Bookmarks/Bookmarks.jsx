@@ -39,7 +39,8 @@ function Bookmarks() {
                 </aside>
               </div>
             ))
-          : null}
+          
+          : <p className="booksmarks__empty">You have no favorites yet!</p>}
       </div>
       <Footer />
     </div>
