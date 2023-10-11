@@ -8,18 +8,7 @@ import Bookmarks from "./views/Bookmarks/Bookmarks";
 import Categories from "./views/Categories/Categories";
 import FilmView from "./views/FilmView/FilmView";
 
-describe("something truthy and falsy", () => {
-  it("true to be true", () => {
-    expect(true).toBe(true);
-  });
-
-  it("false to be false", () => {
-    expect(false).toBe(false);
-  });
-});
-
 // testar navigering till categorie view
-
 describe("App", () => {
   it("should navigate to categories view", async () => {
     render(
