@@ -76,6 +76,7 @@ function SingleMovie({ title, year, thumbnail, genre, actors, synopsis }) {
           )}
           <div className="movie-card__info">
             <h4 className="movie-card__title">{title}</h4>
+            <h4 className="movie-card__year">{year}</h4>
             <FontAwesomeIcon
               data-testid="bookmark"
               icon={faBookmark}

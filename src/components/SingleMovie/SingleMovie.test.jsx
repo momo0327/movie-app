@@ -31,11 +31,12 @@ it("should render singleMovie component with props", () => {
     { wrapper: BrowserRouter }
   );
 
-  const title = screen.queryByText("Movie Title");
-  const image = screen.queryByAltText("movie-img");
+  const title = screen.queryByText("Movie Title"); //getbytext?
+  const image = screen.queryByAltText("movie-img"); //getbytext?
 
   expect(title).toBeInTheDocument();
   expect(image).toBeInTheDocument();
+  // expect(year).toBeInTheDocument();
 });
 
 // it('should call handleViewFilm when image is clicked', async () => {
