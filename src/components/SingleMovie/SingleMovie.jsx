@@ -1,13 +1,18 @@
 import "./SingleMovie.scss";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookmark } from "@fortawesome/free-solid-svg-icons";
 import missingImage from "../../assets/noimage.jpeg";
+import { FavoriteMoviesContext } from "../LocalStorageContext/LocalStorageContext";
 
 function SingleMovie({ title, year, thumbnail, genre, actors, synopsis }) {
   const [isFavorite, setIsFavorite] = useState(false);
   const [imageError, setImageError] = useState(false);
+  // importerar funkttioner och array från context och localstorage.
+  const { addMovie, removeMovie, favoriteMovies } = useContext(
+    FavoriteMoviesContext
+  );
   const navigate = useNavigate();
 
   const handleImageError = () => {
@@ -28,25 +33,24 @@ function SingleMovie({ title, year, thumbnail, genre, actors, synopsis }) {
   };
 
   const handleFavoriteMovie = () => {
-    const storedMovieData = {
+    const movieToAdd = {
       title,
       thumbnail: imageError ? missingImage : thumbnail,
-    }; //filmen man klickat på
-    const storedMovies =
-      JSON.parse(localStorage.getItem("favoriteMovies")) || [];
-    let movieAlreadyInList = false;
+    };
+    addMovie(movieToAdd); // Anropar funktionen addMovie från vår context och lägger till den nya filmen.
 
-    storedMovies.forEach((movie) => {
-      if (movie.title === storedMovieData.title) {
-        movieAlreadyInList = true;
-        return;
-      }
-    });
-
-    if (movieAlreadyInList == false) {
-      storedMovies.push(storedMovieData); //lägger till filmen i listan
-      localStorage.setItem("favoriteMovies", JSON.stringify(storedMovies)); //sparar den uppdaterade listan i localstorage
-      setIsFavorite(true);
+    // Kontrollera om filmen redan finns i favoritlistan
+    const existingMovie = favoriteMovies.find(
+      (movie) => movie.title === movieToAdd.title
+    );
+    if (isFavorite) {
+      // Om filmen redan är en favorit, ta bort den från listan och uppdatera "isFavorite"-statet till false.
+      removeMovie(movieToAdd);
+      setIsFavorite(false);
+    } else {
+      // Om filmen inte redan är en favorit, kontrollera om "existingMovie" är definierad.
+      // Om den är det, sätt "isFavorite" till true, annars är den false.
+      setIsFavorite(existingMovie !== undefined);
     }
   };
 
