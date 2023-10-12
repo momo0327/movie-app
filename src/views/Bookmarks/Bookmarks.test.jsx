@@ -19,7 +19,7 @@ import { FavoriteMoviesProvider } from "../../components/LocalStorageContext/Loc
 // };
 
 describe(Bookmarks, () => {
-  it("should display header, footer and an empty favorites view", () => {
+  it("should display header, footer and an empty favorites view", async () => {
     render(
       <FavoriteMoviesProvider>
         <Bookmarks />
@@ -36,8 +36,6 @@ describe(Bookmarks, () => {
     const bookmarksTitle = screen.getByText("favorites:", { exact: false });
     expect(bookmarksTitle).toBeInTheDocument();
 
-    const emptyFavorites = screen.findByText("You have no favorites yet!");
-    expect(emptyFavorites).toBeInTheDocument();
-
+    await screen.findByText("You have no favorites yet!");
   });
 });
