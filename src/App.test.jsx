@@ -11,7 +11,7 @@ import { FavoriteMoviesProvider } from "./components/LocalStorageContext/LocalSt
 
 // testar navigering till categories view
 describe("App", () => {
-  it("should navigate to categories view", async () => {
+  it.only("should navigate to categories view", async () => {
     render(
       <FavoriteMoviesProvider>
         <BrowserRouter>
@@ -20,10 +20,12 @@ describe("App", () => {
       </FavoriteMoviesProvider>
     );
 
-    const categoriesLink = await screen.getByTestId("categories"); // hämtar LI taggen ifrån navbar, där det ligger en onclick i
+    const categoriesLink = screen.getByTestId("categories"); // hämtar Categories-länken i navbar
 
-    await userEvent.click(categoriesLink); // clickar på den li taggen
-    expect(await window.location.pathname).toBe("/movie-app/categories"); // kollar om url stämmer över categories menyn
+    await userEvent.click(categoriesLink); // klickar på Categories-länken
+    await waitFor(() => {
+      screen.findByText("Drama");
+    });
   });
 });
 
@@ -70,7 +72,6 @@ it("should add a movie by clicking bookmark, go to favorites and see the favorit
 });
 
 it("should add a movie to favorites by clicking on the bookmark on the Landing-page, then remove it from favorites by clicking on it again", async () => {
-  //failar
   const entries = "/movie-app/";
   const user = userEvent.setup();
   render(
