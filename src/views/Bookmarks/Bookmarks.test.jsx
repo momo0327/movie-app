@@ -26,7 +26,7 @@ describe(Bookmarks, () => {
       </MockFavoriteMoviesProvider>,
       { wrapper: BrowserRouter }
     );
-    screen.debug();
+
     const headerTitle = screen.getByText("moviefind", { exact: false });
     expect(headerTitle).toBeInTheDocument();
 
@@ -39,6 +39,5 @@ describe(Bookmarks, () => {
     const emptyFavorites = screen.findByText("You have no favorites yet!");
     expect(emptyFavorites).toBeInTheDocument();
 
-    screen.debug();
   });
 });
