@@ -10,7 +10,7 @@ function Landing() {
   const [allMovies, setAllMovies] = useState([]);
   const [recommendedMovies, setRecommendedMovies] = useState([])
   const [trendingMovies, setTrendingMovies] = useState([])
-
+  console.log("Vi är i Landing!");
   useEffect(() => {
     function getMovies() {
       try {
