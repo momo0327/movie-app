@@ -21,14 +21,14 @@ function Categories() {
   }, []);
 
   function getGenres(movies) {
-    const uniqueGenres = new Set(); // set är en datatyp som bara kan lagra unika värden, går inte få dubbelt av något
+    const uniqueGenres = new Set();
 
     movies.forEach((movie) => {
-      const genres = movie.genre.split(", ").map((genre) => genre); //Delar upp genresträngen i varje movie.genre så att den kan söka igenom sträng för sträng(vissa genre har fler än 1 och då ligger dom i en gemensam sträng)
-      genres.forEach((genre) => uniqueGenres.add(genre)); // Lägger till alla genres i uniqueGenres
+      const genres = movie.genre.split(", ").map((genre) => genre);
+      genres.forEach((genre) => uniqueGenres.add(genre));
     });
 
-    return Array.from(uniqueGenres); // Gör om Set till en vanlig js-array
+    return Array.from(uniqueGenres);
   }
 
   const uniqueGenres = getGenres(allMovies);

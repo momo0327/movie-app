@@ -69,13 +69,12 @@ function SearchBar() {
                 <p className="SearchBar__movie__year">{movie.year}</p>
 
               </div>
-
             );
           })}
         </aside>
       ) : inputValue && (
         <aside className="SearchBar__error">
-          <p className="SearchBar__error--text">No movies found</p>
+          <p className="SearchBar__error__text">No movies found</p>
         </aside>
       )}
     </div>

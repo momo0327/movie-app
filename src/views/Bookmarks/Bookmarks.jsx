@@ -7,7 +7,8 @@ import SingleMovie from "../../components/SingleMovie/SingleMovie";
 import { useNavigate } from "react-router";
 
 function Bookmarks() {
-  const { favoriteMovies, removeMovie } = useContext(FavoriteMoviesContext); // hämtar remove funktion och favorieMovies array från context.
+  const { favoriteMovies, removeMovie } = useContext(FavoriteMoviesContext);
+
   const navigate = useNavigate();
   function handleDelete(titleToDelete) {
     const movieToRemove = favoriteMovies.find(
@@ -17,7 +18,6 @@ function Bookmarks() {
   }
 
   function sendFilmInfoToFilmView(movie) {
-    // sparar objectet i localstorage för att displayas till filmview.
     const movieData = {
       title: movie.title,
       year: movie.year,
