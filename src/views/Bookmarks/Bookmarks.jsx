@@ -8,7 +8,7 @@ import { useNavigate } from "react-router";
 
 function Bookmarks() {
   const { favoriteMovies, removeMovie } = useContext(FavoriteMoviesContext);
-  console.log("Vi är i bookmarks!");
+
   const navigate = useNavigate();
   function handleDelete(titleToDelete) {
     const movieToRemove = favoriteMovies.find(
