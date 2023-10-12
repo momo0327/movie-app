@@ -2,28 +2,28 @@ import { it, expect, describe } from "vitest";
 import { render, screen } from "@testing-library/react";
 import Bookmarks from "./Bookmarks";
 import { BrowserRouter } from "react-router-dom";
-import { FavoriteMoviesContext } from "../../components/LocalStorageContext/LocalStorageContext";
+import { FavoriteMoviesProvider } from "../../components/LocalStorageContext/LocalStorageContext";
 
-const mockFavoriteMoviesProviderValue = {
-  addMovie: vi.fn(),
-  removeMovie: vi.fn(),
-  favoriteMovies: [""],
-};
+// const mockFavoriteMoviesProviderValue = {
+//   addMovie: vi.fn(),
+//   removeMovie: vi.fn(),
+//   favoriteMovies: [""],
+// };
 
-const MockFavoriteMoviesProvider = ({ children }) => {
-  return (
-    <FavoriteMoviesContext.Provider value={mockFavoriteMoviesProviderValue}>
-      {children}
-    </FavoriteMoviesContext.Provider>
-  );
-};
+// const MockFavoriteMoviesProvider = ({ children }) => {
+//   return (
+//     <FavoriteMoviesContext.Provider value={mockFavoriteMoviesProviderValue}>
+//       {children}
+//     </FavoriteMoviesContext.Provider>
+//   );
+// };
 
 describe(Bookmarks, () => {
-  it("should display header, footer and an empty favorites view", () => {
+  it.only("should display header, footer and an empty favorites view", () => {
     render(
-      <MockFavoriteMoviesProvider>
+      <FavoriteMoviesProvider>
         <Bookmarks />
-      </MockFavoriteMoviesProvider>,
+      </FavoriteMoviesProvider>,
       { wrapper: BrowserRouter }
     );
     screen.debug();

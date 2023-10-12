@@ -2,28 +2,28 @@ import { it, expect, describe } from "vitest";
 import { render, screen } from "@testing-library/react";
 import Categories from "./Categories";
 import { BrowserRouter } from "react-router-dom";
-import { FavoriteMoviesContext } from "../../components/LocalStorageContext/LocalStorageContext";
+import { FavoriteMoviesProvider } from "../../components/LocalStorageContext/LocalStorageContext";
 
-const mockFavoriteMoviesProviderValue = {
-  addMovie: vi.fn(),
-  removeMovie: vi.fn(),
-  favoriteMovies: [""],
-};
+// const mockFavoriteMoviesProviderValue = {
+//   addMovie: vi.fn(),
+//   removeMovie: vi.fn(),
+//   favoriteMovies: [""],
+// };
 
-const MockFavoriteMoviesProvider = ({ children }) => {
-  return (
-    <FavoriteMoviesContext.Provider value={mockFavoriteMoviesProviderValue}>
-      {children}
-    </FavoriteMoviesContext.Provider>
-  );
-};
+// const MockFavoriteMoviesProvider = ({ children }) => {
+//   return (
+//     <FavoriteMoviesContext.Provider value={mockFavoriteMoviesProviderValue}>
+//       {children}
+//     </FavoriteMoviesContext.Provider>
+//   );
+// };
 
 describe(Categories, () => {
   it("should display header and footer", () => {
     render(
-      <MockFavoriteMoviesProvider>
+      <FavoriteMoviesProvider>
         <Categories />
-      </MockFavoriteMoviesProvider>,
+      </FavoriteMoviesProvider>,
       { wrapper: BrowserRouter }
     );
     screen.debug();
@@ -38,9 +38,9 @@ describe(Categories, () => {
 describe(Categories, () => {
   it("should display title Categories and sub headers", () => {
     render(
-      <MockFavoriteMoviesProvider>
+      <FavoriteMoviesProvider>
         <Categories />
-      </MockFavoriteMoviesProvider>,
+      </FavoriteMoviesProvider>,
       { wrapper: BrowserRouter }
     );
     screen.debug();
