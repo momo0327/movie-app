@@ -36,8 +36,8 @@ describe(Bookmarks, () => {
     const bookmarksTitle = screen.getByText("favorites:", { exact: false });
     expect(bookmarksTitle).toBeInTheDocument();
 
-    const emptyFavorites = screen.queryByRole("booksmarks__grid");
-    expect(emptyFavorites).not.toBeInTheDocument();
+    const emptyFavorites = screen.findByText("You have no favorites yet!");
+    expect(emptyFavorites).toBeInTheDocument();
 
     screen.debug();
   });
