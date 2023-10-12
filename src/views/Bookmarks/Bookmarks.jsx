@@ -1,46 +1,57 @@
 import "./Bookmarks.scss";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-import { useState, useEffect, useContext } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBookmark } from "@fortawesome/free-solid-svg-icons";
+import { useContext } from "react";
 import { FavoriteMoviesContext } from "../../components/LocalStorageContext/LocalStorageContext";
+import SingleMovie from "../../components/SingleMovie/SingleMovie";
 
 function Bookmarks() {
   const { favoriteMovies, removeMovie } = useContext(FavoriteMoviesContext); // hämtar remove funktion och favorieMovies array från context.
 
-  function handleDelete(indexToDelete) {
-    // Skicka med index från klicket för att ta bort filmen.
-    const movieToRemove = favoriteMovies[indexToDelete];
-    removeMovie(movieToRemove); // Använd removeMovie-funktionen från kontexten för att ta bort filmen.
+  function handleDelete(titleToDelete) {
+    const movieToRemove = favoriteMovies.find(
+      (movie) => movie.title === titleToDelete
+    );
+    removeMovie(movieToRemove);
   }
+
+  function sendFilmInfoToFilmView(movie) {
+    // sparar objectet i localstorage för att displayas till filmview.
+    const movieData = {
+      title: movie.title,
+      year: movie.year,
+      thumbnail: movie.thumbnail,
+      genre: movie.genre,
+      actors: movie.actors,
+      synopsis: movie.synopsis,
+    };
+    localStorage.setItem("selectedMovie", JSON.stringify(movieData));
+    navigate("/movie-app/film-view");
+  }
+
   return (
     <div className="booksmarks">
       <Header />
       <h3>FAVORITES: </h3>
       <br />
       <div className="booksmarks__grid">
-        {favoriteMovies.length > 0
-          ? favoriteMovies.map((movie, index) => (
-              <div className="booksmarks__container" key={index}>
-                <img
-                  src={movie.thumbnail}
-                  alt="movie-img"
-                  className="booksmarks__img"
-                />
-                <aside className="booksmarks__text-container">
-                  <h3 className="booksmarks__title">{movie.title}</h3>
-                  <FontAwesomeIcon
-                    data-testid="remove-booksmark"
-                    icon={faBookmark}
-                    className={`booksmarks__icon`}
-                    onClick={() => handleDelete(index)}
-                  />
-                </aside>
-              </div>
-            ))
-          
-          : <p className="booksmarks__empty">You have no favorites yet!</p>}
+        {favoriteMovies.length > 0 ? (
+          favoriteMovies.map((movie, index) => (
+            <SingleMovie
+              onClick={() => sendFilmInfoToFilmView(movie)}
+              key={movie.title}
+              title={movie.title}
+              year={movie.year}
+              thumbnail={movie.thumbnail}
+              genre={movie.genre}
+              actors={movie.actors}
+              synopsis={movie.synopsis}
+              handleFavoriteMovie={() => handleDelete(index)}
+            />
+          ))
+        ) : (
+          <p className="booksmarks__empty">You have no favorites yet!</p>
+        )}
       </div>
       <Footer />
     </div>
