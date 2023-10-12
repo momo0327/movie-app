@@ -4,10 +4,11 @@ import Footer from "../../components/Footer/Footer";
 import { useContext } from "react";
 import { FavoriteMoviesContext } from "../../components/LocalStorageContext/LocalStorageContext";
 import SingleMovie from "../../components/SingleMovie/SingleMovie";
+import { useNavigate } from "react-router";
 
 function Bookmarks() {
   const { favoriteMovies, removeMovie } = useContext(FavoriteMoviesContext); // hämtar remove funktion och favorieMovies array från context.
-
+  const navigate = useNavigate();
   function handleDelete(titleToDelete) {
     const movieToRemove = favoriteMovies.find(
       (movie) => movie.title === titleToDelete
