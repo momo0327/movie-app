@@ -17,7 +17,6 @@ export const FavoriteMoviesProvider = ({ children }) => {
 
   // Funktion som  lägger till en ny favoritfilm i listan.
   function addMovie(newMovie) {
-    console.log(newMovie);
     // Kontrollera om filmen redan finns i listan.
     const existingMovie = favoriteMovies.find(
       (currentMovie) => currentMovie.title === newMovie.title

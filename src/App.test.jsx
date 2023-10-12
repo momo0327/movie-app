@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { it, expect } from "vitest"; //describe
 import { render, screen, waitFor } from "@testing-library/react";
 import { BrowserRouter, MemoryRouter, Route, Routes } from "react-router-dom";
 import Landing from "./views/Landing/Landing";
@@ -8,26 +8,6 @@ import Bookmarks from "./views/Bookmarks/Bookmarks";
 import Categories from "./views/Categories/Categories";
 import FilmView from "./views/FilmView/FilmView";
 import { FavoriteMoviesProvider } from "./components/LocalStorageContext/LocalStorageContext";
-
-// testar navigering till categories view
-describe("App", () => {
-  it.only("should navigate to categories view", async () => {
-    render(
-      <FavoriteMoviesProvider>
-        <BrowserRouter>
-          <Landing />
-        </BrowserRouter>
-      </FavoriteMoviesProvider>
-    );
-
-    const categoriesLink = screen.getByTestId("categories"); // hämtar Categories-länken i navbar
-
-    await userEvent.click(categoriesLink); // klickar på Categories-länken
-    await waitFor(() => {
-      screen.findByText("Drama");
-    });
-  });
-});
 
 // testar navigering från categories till film-view
 it("should click on a movie and check the url film-view", async () => {
@@ -85,7 +65,6 @@ it("should add a movie to favorites by clicking on the bookmark on the Landing-p
     </FavoriteMoviesProvider>
   );
   const bookmark = screen.getAllByTestId("bookmark");
-  screen.debug();
 
   await user.click(bookmark[0]); //kommer alltid vara The Godfather: Part II
   const navigationToBookMarks = screen.getAllByText("FAVORITES");
@@ -124,13 +103,11 @@ it("should display image on every movie", async () => {
 
   const images = await screen.findAllByAltText("movie-img");
   expect(images).toHaveLength(69);
-  // render error img?
-  // const errorImages = await screen.findAllByAltText("movie-img"); vi har ingen alt för errorbild
-  // expect(errorImages).toHaveLength(2);
+
 });
 
 it("should be able to mark movie as a bookmark from filmView", async () => {
-  //failar
+
   const entries = "/movie-app/";
   const user = userEvent.setup();
   render(
@@ -177,15 +154,4 @@ it("should add a movie by clicking bookmark, go to favorites and see the favorit
 
   const navigationToBookMark = screen.getAllByText("FAVORITES");
   await user.click(navigationToBookMark[0]);
-  screen.debug();
-
-  // const favoriteMovie = screen.getByText(/The Godfather: Part II/i);
-  // expect(favoriteMovie).toBeInTheDocument();
-
-  // const reloadFn = () => {
-  //   window.location.reload(); // refreshar sidan
-  // };
-  // reloadFn();
-
-  // expect(favoriteMovie).toBeInTheDocument();
 });
