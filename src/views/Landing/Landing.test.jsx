@@ -26,7 +26,7 @@ describe(Landing, () => {
     expect(screen.getByText("RECOMMENDED")).toBeInTheDocument();
 
     const moviesInLanding = screen.getAllByAltText("movie-img");
-    expect(moviesInLanding.length).toBe(14);
+    expect(moviesInLanding).toHaveLength(14);
 
     const footerText = screen.getByText("SUBSCRIBE TO OUR NEWSLETTER!");
     expect(footerText).toBeInTheDocument();

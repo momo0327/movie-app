@@ -31,7 +31,6 @@ function SingleMovie({ title, year, thumbnail, genre, actors, synopsis }) {
     navigate("/movie-app/film-view");
   };
   useEffect(() => {
-    
     const existingMovie = favoriteMovies.find((movie) => movie.title === title);
     setIsFavorite(existingMovie !== undefined);
   }, [favoriteMovies, title]);
@@ -46,10 +45,8 @@ function SingleMovie({ title, year, thumbnail, genre, actors, synopsis }) {
       synopsis,
     };
     if (isFavorite) {
-
       removeMovie(movieToAdd);
     } else {
-
       addMovie(movieToAdd);
     }
 
