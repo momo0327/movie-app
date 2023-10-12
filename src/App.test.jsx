@@ -7,26 +7,29 @@ import SingleMovie from "./components/SingleMovie/SingleMovie";
 import Bookmarks from "./views/Bookmarks/Bookmarks";
 import Categories from "./views/Categories/Categories";
 import FilmView from "./views/FilmView/FilmView";
-import { FavoriteMoviesContext, FavoriteMoviesProvider } from "./components/LocalStorageContext/LocalStorageContext";
-import { vi } from "vitest";
+import { FavoriteMoviesProvider } from "./components/LocalStorageContext/LocalStorageContext"; 
+//FavoriteMoviesContext från samma som FavoriteMoviesProvider
+// import { vi } from "vitest";
 
-const mockFavoriteMoviesProviderValue = {
-  // gör funktionerna + arrayen till en variabel ifrån localStorageContext.
-  addMovie: vi.fn(),
-  removeMovie: vi.fn(),
-  favoriteMovies: [""],
-};
+
+//behövs mockfavoritegrejerna nu?
+// const mockFavoriteMoviesProviderValue = {
+//   // gör funktionerna + arrayen till en variabel ifrån localStorageContext.
+//   addMovie: vi.fn(),
+//   removeMovie: vi.fn(),
+//   favoriteMovies: [""],
+// };
 
 // skapar en egen provider med de mockade värderna som man måste wrappa i testerna för att contexten finns över hela sidan.
-const MockFavoriteMoviesProvider = ({ children }) => {
-        // skickar med variabeln som props här nedan tillsammans med providern.
-  return (
-    <FavoriteMoviesContext.Provider value={mockFavoriteMoviesProviderValue}>
-      {" "}
-      {children}
-    </FavoriteMoviesContext.Provider>
-  );
-};
+// const MockFavoriteMoviesProvider = ({ children }) => {
+//         // skickar med variabeln som props här nedan tillsammans med providern.
+//   return (
+//     <FavoriteMoviesContext.Provider value={mockFavoriteMoviesProviderValue}>
+//       {" "}
+//       {children}
+//     </FavoriteMoviesContext.Provider>
+//   );
+// };
 
 // testar navigering till categories view
 describe("App", () => {
@@ -67,14 +70,14 @@ describe("App", () => {
     const user = userEvent.setup();
 
     render(
-      <MockFavoriteMoviesProvider>
+      <FavoriteMoviesProvider>
         <MemoryRouter initialEntries={[entries]}>
           <Routes>
             <Route path="/movie-app/" element={<Landing />} />
             <Route path="/movie-app/bookmarks" element={<Bookmarks />} />
           </Routes>
         </MemoryRouter>
-      </MockFavoriteMoviesProvider>
+      </FavoriteMoviesProvider>
     );
 
     const bookmark = screen.getAllByTestId("bookmark");
@@ -92,14 +95,14 @@ describe("App", () => {
     const user = userEvent.setup();
 
     render(
-      <MockFavoriteMoviesProvider>
+      <FavoriteMoviesProvider>
         <MemoryRouter initialEntries={[entries]}>
           <Routes>
             <Route path="/movie-app/" element={<Landing />} />
             <Route path="/movie-app/bookmarks" element={<Bookmarks />} />
           </Routes>
         </MemoryRouter>
-      </MockFavoriteMoviesProvider>
+      </FavoriteMoviesProvider>
     )
 
     const bookmark = screen.getAllByTestId("bookmark");
@@ -121,14 +124,14 @@ describe("App", () => {
     const entries = "/movie-app/";
     const user = userEvent.setup();
     render(
-      <MockFavoriteMoviesProvider>
+      <FavoriteMoviesProvider>
         <MemoryRouter initialEntries={[entries]}>
           <Routes>
             <Route path="/movie-app/" element={<Landing />} />
             <Route path="/movie-app/bookmarks" element={<Bookmarks />} />
           </Routes>
         </MemoryRouter>
-      </MockFavoriteMoviesProvider>
+      </FavoriteMoviesProvider>
     );
     const bookmark = screen.getAllByTestId("bookmark");
     await user.click(bookmark[0]);
@@ -143,14 +146,14 @@ describe("App", () => {
     const entries = "/movie-app/";
     const user = userEvent.setup();
     render(
-      <MockFavoriteMoviesProvider>
+      <FavoriteMoviesProvider>
         <MemoryRouter initialEntries={[entries]}>
           <Routes>
             <Route path="/movie-app/" element={<Landing />} />
             <Route path="/movie-app/categories" element={<Categories />} />
           </Routes>
         </MemoryRouter>
-      </MockFavoriteMoviesProvider>
+      </FavoriteMoviesProvider>
     );
     const navigationToCategories = screen.getAllByText("CATEGORIES");
     await user.click(navigationToCategories[0]);
@@ -162,7 +165,7 @@ describe("App", () => {
     // expect(errorImages).toHaveLength(2);
   });
 
-  it.only("should be able to mark movie as a bookmark from filmView", async () => { //failar
+  it("should be able to mark movie as a bookmark from filmView", async () => { //failar
     const entries = "/movie-app/";
     const user = userEvent.setup();
     render(
@@ -205,14 +208,14 @@ it("should add a movie by clicking bookmark, go to favorites and see the favorit
   const entries = "/movie-app/";
   const user = userEvent.setup();
   render(
-    <MockFavoriteMoviesProvider>
+    <FavoriteMoviesProvider>
       <MemoryRouter initialEntries={[entries]}>
         <Routes>
           <Route path="/movie-app/" element={<Landing />} />
           <Route path="/movie-app/bookmarks" element={<Bookmarks />} />
         </Routes>
       </MemoryRouter>
-    </MockFavoriteMoviesProvider>
+    </FavoriteMoviesProvider>
   );
   const bookmark = screen.getAllByTestId("bookmark");
   user.click(bookmark[0]);
