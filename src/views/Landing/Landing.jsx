@@ -28,7 +28,7 @@ function Landing() {
   }
 
   useEffect(() => {
-    const filteredMovies = allMovies.filter((movie) => !movie.isTrending); //filtrerar bort filmer som är IsTrending
+    const filteredMovies = allMovies.filter((movie) => !movie.isTrending);
     const randomMovies = getRandomMovies(filteredMovies, 7);
     setRecommendedMovies(randomMovies);
 
@@ -36,9 +36,9 @@ function Landing() {
     setTrendingMovies(trendingMoviesData);
   }, [allMovies]);
   
-  function getRandomMovies(movieArray, numberOfMovies) { // tar emot filteredMovies och siffran på hur många filmer vi vill slumpa ut
-    const shuffledMovieArray = movieArray.sort(() => Math.random() - 0.5); // här blandas movieArray om slumpmässigt med hjälp av metoden sort().
-    return shuffledMovieArray.slice(0, numberOfMovies); // tar de första filmerna, hur många det är styrs av numberOfMovies
+  function getRandomMovies(movieArray, numberOfMovies) {
+    const shuffledMovieArray = movieArray.sort(() => Math.random() - 0.5);
+    return shuffledMovieArray.slice(0, numberOfMovies);
   }
 
 

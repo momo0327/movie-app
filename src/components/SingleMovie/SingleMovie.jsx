@@ -9,7 +9,6 @@ import { FavoriteMoviesContext } from "../LocalStorageContext/LocalStorageContex
 function SingleMovie({ title, year, thumbnail, genre, actors, synopsis }) {
   const [isFavorite, setIsFavorite] = useState(false);
   const [imageError, setImageError] = useState(false);
-  // importerar funkttioner och array från context och localstorage.
   const { addMovie, removeMovie, favoriteMovies } = useContext(
     FavoriteMoviesContext
   );
@@ -32,7 +31,7 @@ function SingleMovie({ title, year, thumbnail, genre, actors, synopsis }) {
     navigate("/movie-app/film-view");
   };
   useEffect(() => {
-    // Kollar om movie är en favorit varje gång som favoriteMovies uppdateras i localstorage.
+    
     const existingMovie = favoriteMovies.find((movie) => movie.title === title);
     setIsFavorite(existingMovie !== undefined);
   }, [favoriteMovies, title]);
@@ -47,14 +46,13 @@ function SingleMovie({ title, year, thumbnail, genre, actors, synopsis }) {
       synopsis,
     };
     if (isFavorite) {
-      // Om filmen är en favorit, ta bort den.
+
       removeMovie(movieToAdd);
     } else {
-      // om filmen inte är en favorit, lägg till den.
+
       addMovie(movieToAdd);
     }
 
-    // Togglar isFavorite statet.
     setIsFavorite(!isFavorite);
   };
 
