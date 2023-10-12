@@ -2,22 +2,22 @@ import SingleMovie from "./SingleMovie";
 import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import { it, expect } from "vitest"; //vitest
-import { FavoriteMoviesContext } from "../LocalStorageContext/LocalStorageContext";
-import { vi } from "vitest";
+import { FavoriteMoviesProvider } from "../LocalStorageContext/LocalStorageContext";
+//import { vi } from "vitest";
 
-const mockFavoriteMoviesProviderValue = {
-  addMovie: vi.fn(),
-  removeMovie: vi.fn(),
-  favoriteMovies: [""],
-};
+// const mockFavoriteMoviesProviderValue = {
+//   addMovie: vi.fn(),
+//   removeMovie: vi.fn(),
+//   favoriteMovies: [""],
+// };
 
-const MockFavoriteMoviesProvider = ({ children }) => {
-  return (
-    <FavoriteMoviesContext.Provider value={mockFavoriteMoviesProviderValue}>
-      {children}
-    </FavoriteMoviesContext.Provider>
-  );
-};
+// const MockFavoriteMoviesProvider = ({ children }) => {
+//   return (
+//     <FavoriteMoviesContext.Provider value={mockFavoriteMoviesProviderValue}>
+//       {children}
+//     </FavoriteMoviesContext.Provider>
+//   );
+// };
 
 it("should render singleMovie component with props", () => {
   const movie = {
@@ -26,9 +26,9 @@ it("should render singleMovie component with props", () => {
   };
 
   render(
-    <MockFavoriteMoviesProvider>
+    <FavoriteMoviesProvider>
       <SingleMovie title={movie.title} thumbnail={movie.thumbnail} />
-    </MockFavoriteMoviesProvider>,
+    </FavoriteMoviesProvider>,
     { wrapper: BrowserRouter }
   );
 

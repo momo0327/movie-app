@@ -19,7 +19,7 @@ import { FavoriteMoviesProvider } from "../../components/LocalStorageContext/Loc
 // };
 
 describe(Bookmarks, () => {
-  it.only("should display header, footer and an empty favorites view", () => {
+  it("should display header, footer and an empty favorites view", () => {
     render(
       <FavoriteMoviesProvider>
         <Bookmarks />
