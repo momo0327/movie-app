@@ -14,13 +14,13 @@ function DisplayCarousel({ genreMovies }) {
 
   const scrollLeft = () => {
     if (gridRef.current) {
-      gridRef.current.scrollLeft -= 500; // how much the movies will move to the side when clicking on button
+      gridRef.current.scrollLeft -= 250; // how much the movies will move to the side when clicking on button
     }
   };
 
   const scrollRight = () => {
     if (gridRef.current) {
-      gridRef.current.scrollLeft += 500; // how much the movies will move to the side when clicking on button
+      gridRef.current.scrollLeft += 250; // how much the movies will move to the side when clicking on button
     }
   };
 

@@ -54,7 +54,13 @@
   &__bookmark-icon--active {
     color: #1f72d0;
   }
+  &__wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
+
 
 @media (max-width: 768px) {
 
@@ -68,9 +74,31 @@
     &__bookmark-icon{
       font-size: 1.1rem;
     }
+    &__year{
+      font-size: 12px;
+    }
   }
 
 }
+@media (max-width: 768px) {
+
+  .movie-card {
+    width: 120px;
+    height: 300px; 
+    &__title {
+      font-size: 12px;
+      font-weight: 300;
+    }
+    &__bookmark-icon{
+      font-size: 1.1rem;
+    }
+  }
+  .grid{
+    padding: 0;
+  }
+
+}
+
 
 
 
